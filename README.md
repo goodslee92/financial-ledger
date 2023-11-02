@@ -1,3 +1,7 @@
+#가계부 포트폴리오 프로젝트
+
+React + node.js
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
