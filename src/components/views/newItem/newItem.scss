@@ -1,0 +1,73 @@
+.new-item h1 {
+    margin-bottom: 32px;
+    font-weight: bold;
+}
+
+.new-item-form-info {
+    text-align: left;
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 20px;
+}
+
+.new-item:before {
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: 45px;
+    width: 350px;
+    height: 0px;
+    opacity: 0.5;
+    border: 1px solid #000000;
+}
+
+.fs-normal {
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+.new-item-form-info-title {
+    display: flex;
+    align-items: baseline;
+}
+  
+.new-item-form-info-title h2 {
+    margin-right: 10px;
+}
+
+.amount_type {
+    display: flex;
+}
+
+.amount_income {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.amount_expense {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.amount__income input[type='radio'],
+.amount__expense input[type='radio'] {
+  margin-right: 2px;
+  accent-color: #808080;
+}
+
+.amount__income input[type='radio']:checked,
+.amount__expense input[type='radio']:checked {
+  accent-color: #5D5FEF;
+}
+
+.new-item_form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.new-item_form-actions button:first-child {
+margin-right: 32px;
+}
