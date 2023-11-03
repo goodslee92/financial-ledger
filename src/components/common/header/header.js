@@ -1,4 +1,4 @@
-import { addComma } from '../../utils/numberUtils';
+import { addComma } from '../../../utils/numberUtils';
 import React, { useEffect, useState } from "react";
 
 const Header = () => {

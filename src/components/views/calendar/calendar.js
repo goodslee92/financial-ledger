@@ -3,7 +3,7 @@ import { subMonths, addMonths } from 'date-fns';
 import CalendarHeader from './calendarHeader';
 import CalendarDays from './calendarDays';
 import CalendarCells from './calendarCells';
-import Header from '../../header/header';
+import Header from '../../common/header/header';
 
 export const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date());

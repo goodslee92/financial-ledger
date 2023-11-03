@@ -1,4 +1,4 @@
-import Header from '../../header/header';
+import Header from '../../common/header/header';
 
 const Daily = () => {
     return (
