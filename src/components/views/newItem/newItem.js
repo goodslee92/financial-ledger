@@ -1,6 +1,5 @@
 import { enteredOnlyNumber, addComma, deleteComma } from '../../../utils/numberUtils';
 import { CancleContext, RegisterContext } from '../home/home.js';
-import './newItem.scss';
 import React, { useCallback, useContext, useState } from "react";
 
 const NewItem = () => {

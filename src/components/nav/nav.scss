@@ -1,9 +1,10 @@
 .navbar {
     margin-top: 42px;
     width: 100%;
-    background-color: #afcef1;
+    background-color: rgb(160, 223, 196);
     padding: 10px 50px;
     text-align: center;
+    border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
 
@@ -11,4 +12,5 @@
     color: black;
     margin: 5px;
     text-decoration: none;
+    width: 20%;
 }

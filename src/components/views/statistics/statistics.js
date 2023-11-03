@@ -1,5 +1,3 @@
-import './statistics.scss'
-
 const Statistics = () => {
     return (
         <div className="statistics">

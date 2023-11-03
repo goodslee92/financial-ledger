@@ -1,5 +1,3 @@
-import './daily.scss'
-
 const Daily = () => {
     return (
         <div className="daily">

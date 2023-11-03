@@ -3,13 +3,15 @@ import { format } from 'date-fns';
 
 const CalendarHeader = ({ currentMonth, prevMonth, nextMonth }) => {
     return (
-        <div className="header row">
+        <div className="calendarHeader row">
             <div className="col col-start">
                 <span className="text">
                     <span className="text month">
                         {format(currentMonth, 'M')}월
                     </span>
-                    {format(currentMonth, 'yyyy')}
+                    <span className="text year">
+                        {" "}{format(currentMonth, 'yyyy')}
+                    </span>
                 </span>
             </div>
             <div className="col col-end">

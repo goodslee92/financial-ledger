@@ -1,4 +1,3 @@
-import './calendar.scss';
 import { useState } from 'react';
 import { subMonths, addMonths } from 'date-fns';
 import CalendarHeader from './calendarHeader';

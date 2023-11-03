@@ -1,5 +1,5 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/nav/nav';
 import Header from './components/header/header';
@@ -11,6 +11,13 @@ import Statistics from './components/views/statistics/statistics';
 import Calendar from './components/views/calendar/calendar';
 import "./styles/button.scss";
 import "./styles/style.scss";
+import './components/views/daily/daily.scss'
+import './components/views/home/home.scss'
+import './components/views/newItem/newItem.scss';
+import './components/views/statistics/statistics.scss'
+import './components/nav/nav.scss'
+import './components/header/header.scss';
+import './components/footer/footer.scss';
 
 function App() {
   // const isPc = useMediaQuery({

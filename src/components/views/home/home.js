@@ -1,4 +1,3 @@
-import './home.scss'
 import NewItem from '../newItem/newItem'
 import React, { useState, useMemo, useCallback, createContext } from "react";
 
