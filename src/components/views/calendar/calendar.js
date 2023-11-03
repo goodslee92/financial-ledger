@@ -3,6 +3,7 @@ import { subMonths, addMonths } from 'date-fns';
 import CalendarHeader from './calendarHeader';
 import CalendarDays from './calendarDays';
 import CalendarCells from './calendarCells';
+import Header from '../../header/header';
 
 export const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -19,6 +20,7 @@ export const Calendar = () => {
     };
     return (
         <div className="calendar">
+            <Header />
             <CalendarHeader currentMonth={currentMonth} prevMonth={() => prevMonth()} nextMonth={() => nextMonth()} />
             <CalendarDays />
             <CalendarCells currentMonth={currentMonth} selectedDate={selectedDate} onDateClick={() => onDateClick()} />
