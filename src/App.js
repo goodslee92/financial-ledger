@@ -13,7 +13,6 @@ import './components/views/calendar/calendar.scss';
 import './components/views/daily/daily.scss'
 import './components/views/home/home.scss'
 import './components/views/newItem/newItem.scss';
-import './components/views/statistics/statistics.scss'
 import './components/common/nav/nav.scss'
 import './components/common/header/header.scss';
 import './components/common/footer/footer.scss';

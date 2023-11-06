@@ -1,34 +1,23 @@
 import React, { useState } from "react";
+import Select from "react-select"
+import './statistics.scss';
 
-const Statistics = () => {
-    const [isDropdownView, setDropdownView] = useState(false)
-
-    const handleClickContainer = () => {
-      setDropdownView(!isDropdownView)
-    }
-  
-    const handleBlurContainer = () => {
-      setTimeout(() => {
-        setDropdownView(false)
-      }, 200);
-    }
+const Dropdown = () => {
+    const options = [
+        { value: "주간", label: "주간" },
+        { value: "월간", label: "월간" },
+        { value: "연간", label: "연간" },
+    ]
     return (
-        <div className="statistics_container" onBlur={handleBlurContainer}>
-            <div className="dropDownArea">
-                <h3 className="period">기간</h3>
-                <label className="periodDropDown" onClick={handleClickContainer}>
-                    <button>선택하세요{isDropdownView ? '▲' : '▼'}</button>
-                </label>
-                {isDropdownView &&
-                    <>
-                        <li>주간</li>
-                        <li>월간</li>
-                        <li>연간</li>
-                    </>
-                }
-            </div>
+        <div className="statistics_container">
+            <div className="dropDown_container">
+                <div className="period_div">
+                    <h1 className="periodTitle">기간</h1>
+                </div>
+                <Select options={options} className="select"/>
+            </div>  
         </div>
-    )
+    );
 }
 
-export default Statistics
+export default Dropdown
