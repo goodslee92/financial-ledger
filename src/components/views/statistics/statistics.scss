@@ -7,21 +7,31 @@
   align-items: center;
 }
 .dropDown_container {
-  min-width: 100%;
-  box-shadow: 0 4px 5px 0 #00000026;
+  min-width: 300px;
+  box-shadow: 1px 4px 5px 1px #00000026;
   display: flex;
   position: absolute;
   z-index: 10;
 }
 
 .periodTitle {
-  margin-left: 10px;
-  font-size: 20px;
+  font-size: 15px;
+}
+.period_div {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 30%;
 }
 
 .select {
   color: #333333;
   font-family: sans-serif;
-  inline-size: 30%;
+  inline-size: 100%;
   font-size: 11px;
+}
+.select_div {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
 }

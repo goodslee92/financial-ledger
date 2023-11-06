@@ -14,7 +14,9 @@ const Dropdown = () => {
                 <div className="period_div">
                     <h1 className="periodTitle">기간</h1>
                 </div>
-                <Select options={options} className="select"/>
+                <div className="select_div">
+                    <Select options={options} className="select"/>
+                </div>
             </div>  
         </div>
     );
