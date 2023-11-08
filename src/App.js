@@ -6,7 +6,6 @@ import Footer from './components/common/footer/footer';
 import Home from './components/views/home/home';
 import Daily from './components/views/daily/daily';
 import Statistics from './components/views/statistics/statistics';
-// import { useMediaQuery } from "react-responsive";
 import Calendar from './components/views/calendar/calendar';
 import "./styles/button.scss";
 import './components/views/calendar/calendar.scss';
@@ -18,7 +17,7 @@ import './components/common/header/header.scss';
 import './components/common/footer/footer.scss';
 
 function App() {
-  // const isPc = useMediaQuery({
+    // const isPc = useMediaQuery({
   //   query: "(min-width:1024px)"
   // })
   // const isTablet = useMediaQuery({
