@@ -19,20 +19,20 @@ const Dropdown = () => {
                 </div>
             </div>
             <div className="content_container">
-                <div className="period_container">
-                    <p>11.5 ~ 11.11</p>
-                    <p>11.12 ~ 11.18</p>
-                    <p>11.19 ~ 11.25</p>
+                <div className="row_container">
+                    <p className="period">11.5 ~ 11.11</p>
+                    <p className="income">{addComma("+5000")}원</p>
+                    <p className="outcome">{addComma("-39800")}원</p>
                 </div>
-                <div className="income_container">
-                    <p>{addComma("+5000")}원</p>
-                    <p>{addComma("+3980000")}원</p>
-                    <p>{addComma("+123456")}원</p>
+                <div className="row_container">
+                    <p className="period">11.12 ~ 11.18</p>
+                    <p className="income">{addComma("+3980000")}원</p>
+                    <p className="outcome">{addComma("-266800")}원</p>
                 </div>
-                <div className="outcome_container">
-                    <p>{addComma("-39800")}원</p>
-                    <p>{addComma("-246800")}원</p>
-                    <p>{addComma("-15000800")}원</p>
+                <div className="row_container">
+                    <p className="period">11.19 ~ 11.25</p>
+                    <p className="income">{addComma("+123456")}원</p>
+                    <p className="outcome">{addComma("-15000800")}원</p>
                 </div>
             </div>
         </div>

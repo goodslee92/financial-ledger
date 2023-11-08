@@ -32,37 +32,29 @@
 .content_container {
   top: 200px;
   width: 100%;
-  display: flex;
   position: absolute;
 }
 
-.period_container {
+.row_container {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 50%;
+  justify-content: center;
+  flex-direction: row;
+  border-bottom: 1px solid theme.$gray-color;
+}
+.period {
+  margin-left: 200px;
+  width: 7%;
   text-align: right;
   color: black;
+  background-color: gray; 
 }
-
-.income_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50%;
+.income {
+  width: 47%;
   color: theme.$light-green;
   text-align: right;
 }
-
-.outcome_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  width: 50%;
+.outcome {
+  width: 46%;
   color: theme.$light-red;
   text-align: right;
-}
-
-p {
-  border-bottom: 1px solid theme.$gray-color;
 }
