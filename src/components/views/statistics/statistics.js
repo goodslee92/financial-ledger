@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Select from "react-select"
 import './statistics.scss';
 import Header from '../../common/header/header';
@@ -10,6 +10,8 @@ const Dropdown = () => {
         { value: "월간", label: "월간" },
         { value: "연간", label: "연간" }
     ]
+    const [dummy, setDummy] = useState([['11.5 ~ 11.11', '+12345', '-10000'],['11.12 ~ 11.18', '+24680', '-20000'],['11.19 ~ 11.25', '+987654321', '-13579123']]);
+
     return (
         <div className="statistics_container">
             <Header />
@@ -19,21 +21,17 @@ const Dropdown = () => {
                 </div>
             </div>
             <div className="content_container">
-                <div className="row_container">
-                    <p className="period">11.5 ~ 11.11</p>
-                    <p className="income">{addComma("+5000")}원</p>
-                    <p className="outcome">{addComma("-39800")}원</p>
-                </div>
-                <div className="row_container">
-                    <p className="period">11.12 ~ 11.18</p>
-                    <p className="income">{addComma("+3980000")}원</p>
-                    <p className="outcome">{addComma("-266800")}원</p>
-                </div>
-                <div className="row_container">
-                    <p className="period">11.19 ~ 11.25</p>
-                    <p className="income">{addComma("+123456")}원</p>
-                    <p className="outcome">{addComma("-15000800")}원</p>
-                </div>
+                {
+                    dummy.map(function(content) {
+                        return (
+                            <div className="row_container">
+                                <p className="period">{content[0]}</p>
+                                <p className="income">{addComma(content[1])}원</p>
+                                <p className="outcome">{addComma(content[2])}원</p>
+                            </div>
+                        )
+                    })
+                }
             </div>
         </div>
     );
