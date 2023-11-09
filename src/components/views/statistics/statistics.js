@@ -10,6 +10,10 @@ const Dropdown = () => {
         { value: "월간", label: "월간" },
         { value: "연간", label: "연간" }
     ]
+    const [selectedValue, setSelectedValue] = useState("");
+    const handleSelect = (e) => {
+        setSelectedValue(e.value);
+    }
     const [dummy, setDummy] = useState([['11.5 ~ 11.11', '+12345', '-10000'],['11.12 ~ 11.18', '+24680', '-20000'],['11.19 ~ 11.25', '+987654321', '-13579123']]);
 
     return (
@@ -17,14 +21,14 @@ const Dropdown = () => {
             <Header />
             <div className="dropDown_container">
                 <div className="select_div">
-                    <Select options={options} className="select"/>
+                    <Select options={options} className="select" onChange={handleSelect} />
                 </div>
             </div>
             <div className="content_container">
                 {
-                    dummy.map(function(content) {
+                    dummy.map((content, index) => {
                         return (
-                            <div className="row_container">
+                            <div className="row_container" key={index}>
                                 <p className="period">{content[0]}</p>
                                 <p className="income">{addComma(content[1])}원</p>
                                 <p className="outcome">{addComma(content[2])}원</p>
