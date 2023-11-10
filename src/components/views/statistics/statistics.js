@@ -3,8 +3,12 @@ import Select from "react-select"
 import './statistics.scss';
 import Header from '../../common/header/header';
 import { addComma } from '../../../utils/numberUtils';
+import { getTblInfo } from "../../../api/statistics_api";
 
 const Dropdown = () => {
+    useEffect(() => {
+        getTblInfo()
+    })
     const options = [
         { value: "주간", label: "주간" },
         { value: "월간", label: "월간" },
@@ -36,34 +40,9 @@ const Dropdown = () => {
                         )
                     })
                 }
-                {useGet()}
             </div>
         </div>
     );
-}
-
-function useGet() {
-    useEffect(() => {
-        getTblInfo()
-    })
-}
-
-async function getTblInfo() {
-    const res = await fetch("http://localhost:3001/api/moneyTblInfo", {
-        method: 'get',
-        headers: {
-            'Content-type' : 'application/json',
-        }
-    });
-    if (res.ok) {
-        // 성공
-        const data = res.json();
-        console.log(data);
-        return data;
-    } else {
-        // 실패
-        console.error('실패');
-    }
 }
 
 export default Dropdown
