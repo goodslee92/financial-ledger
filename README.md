@@ -1,6 +1,8 @@
 # 가계부 포트폴리오 프로젝트
 
-React + node.js
+Front : React
+Back-End : Node.js
+DB : mariaDB
 
 # Getting Started with Create React App
 
