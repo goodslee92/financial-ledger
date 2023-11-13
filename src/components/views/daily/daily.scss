@@ -3,7 +3,10 @@
 .daily {
     top: 0;
     width: 100%;
-    background-color: #f4e7e3;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .content_container {
@@ -16,7 +19,7 @@
     width: 10%;
     text-align: center;
     color: black;
-    background-color: gray; 
+    background-color: theme.$light-gray;
     border-radius: 10px;
 }
 .income {

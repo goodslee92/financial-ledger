@@ -9,7 +9,6 @@ import Statistics from './components/views/statistics/statistics';
 import Calendar from './components/views/calendar/calendar';
 import "./styles/button.scss";
 import './components/views/calendar/calendar.scss';
-import './components/views/daily/daily.scss'
 import './components/views/home/home.scss'
 import './components/views/newItem/newItem.scss';
 import './components/common/nav/nav.scss'

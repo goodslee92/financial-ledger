@@ -1,6 +1,7 @@
 import Header from '../../common/header/header';
 import { useState, useEffect } from "react";
 import { addComma } from '../../../utils/numberUtils';
+import './daily.scss';
 import axios from 'axios';
 
 const Daily = () => {

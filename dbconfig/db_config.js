@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/moneyTblInfo', (req, res) => {
-    const sqlQuery = "SELECT * FROM money";
+    const sqlQuery = "SELECT DATE_FORMAT(USE_DATE, '%Y-%m-%d') as USE_DATE, AMOUNT, IO_TYPE FROM money";
     
     db.query(sqlQuery, (err, data) => {
         if (err) {
