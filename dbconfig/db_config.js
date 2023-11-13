@@ -5,7 +5,7 @@ const port = 3001;
 const mysql = require('mysql');
 const cors = require('cors');
 const corsOptions = {
-    origin: true,
+    origin: "*",
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
@@ -15,7 +15,10 @@ const db = mysql.createPool({
     port: 30416,
     user : 'root',
     password : '!Jaehwa3021',
-    database : 'fl'
+    database : 'fl',
+    // connectionLimit: 5,
+    // connectTimeout: 30000,
+    // acquireTimeout: 10000
 });
 
 app.use(bodyParser.json());
@@ -27,8 +30,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/moneyTblInfo', (req, res) => {
-    console.log('ㅅㅂ백엔드');
-    db.query("SELECT * FROM money", (err, data) => {
+    const sqlQuery = "SELECT * FROM money";
+    
+    db.query(sqlQuery, (err, data) => {
         if (err) {
             console.log('err');
             res.send(err);

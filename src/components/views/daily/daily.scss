@@ -1,5 +1,32 @@
+@use '../../../styles/theme.scss';
+
 .daily {
     top: 0;
     width: 100%;
     background-color: #f4e7e3;
+}
+
+.content_container {
+    top: 150px;
+    width: 100%;
+    position: absolute;
+}
+.date {
+    margin-left: 200px;
+    width: 10%;
+    text-align: center;
+    color: black;
+    background-color: gray; 
+    border-radius: 10px;
+}
+.income {
+    width: 45%;
+    color: theme.$light-green;
+    text-align: right;
+}
+.outcome {
+    margin-right: 200px;
+    width: 45%;
+    color: theme.$light-red;
+    text-align: right;
 }
