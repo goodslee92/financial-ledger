@@ -20,7 +20,7 @@ export const Calendar = () => {
     };
     return (
         <div className="calendar">
-            <Header />
+            <Header income={'13579'} outcome={'24680'} sum={'1234567890'}/>
             <CalendarHeader currentMonth={currentMonth} prevMonth={() => prevMonth()} nextMonth={() => nextMonth()} />
             <CalendarDays />
             <CalendarCells currentMonth={currentMonth} selectedDate={selectedDate} onDateClick={() => onDateClick()} />

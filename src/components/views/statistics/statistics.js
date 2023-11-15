@@ -22,7 +22,7 @@ const Dropdown = () => {
 
     return (
         <div className="statistics_container">
-            <Header />
+            <Header income={'13579'} outcome={'24680'} sum={'1234567890'}/>
             <div className="dropDown_container">
                 <div className="select_div">
                     <Select defaultValue={options[0]} options={options} className="select" onChange={handleOnChange} />
