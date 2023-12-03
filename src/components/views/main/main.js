@@ -20,8 +20,8 @@ function Main() {
                 <input className="password" type="text" placeholder="Password" maxLength={pw_max_length} /><br />
             </div>
             <div className="btn_container">
-                <button className="sign_up btn-gray" onClick={navigateToSignUp}>회원가입</button>
-                <button className="sign_in btn-gray" onClick={navigateToSignIn}>로그인</button>
+                <button className="sign_up btn-gray" onClick={navigateToSignUp}>Sign Up</button>
+                <button className="sign_in btn-gray" onClick={navigateToSignIn}>Log In</button>
             </div>
         </div>
     );

@@ -36,7 +36,24 @@ app.get('/api/moneyTblInfo', (req, res) => {
         if (err) {
             console.log('err');
             res.send(err);
-        } else{
+        } else {
+            console.log('success');
+            res.send(data);
+        }
+    });
+});
+
+app.post('/api/registerAccount', (req, res) => {
+    const user_id = req.body.id;
+    const user_pw = req.body.password;
+    const user_name = req.body.name;
+
+    const sqlQuery = "INSERT INTO member (user_id, user_pw, user_name) VALUES (?, ?, ?)";
+    db.query(sqlQuery,[user_id, user_pw, user_name], (err, data) => {
+        if(err) {
+            console.log('err');
+            res.send(err);
+        } else {
             console.log('success');
             res.send(data);
         }
