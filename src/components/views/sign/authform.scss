@@ -1,0 +1,27 @@
+h1 {
+  margin-top: 1%;
+  margin-bottom: 3%;
+  text-align: center;
+}
+
+.inputList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 15%;
+}
+
+.span {
+  margin-top: 5px;
+}
+
+.passwordCheck {
+  margin-top: 5px;
+}
+
+.btn-signup {
+  margin: 10px auto;
+  width: fit-content;
+
+}

@@ -1,0 +1,22 @@
+.root_container {
+  flex-flow: column;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin-top: 1%;
+  margin-bottom: 3%;
+}
+.password {
+  margin-top: 5px;
+}
+.sign_up {
+  margin-top: 10%;
+}
+.sign_in {
+  margin-top: 10%;
+  margin-left: 10px;
+}
