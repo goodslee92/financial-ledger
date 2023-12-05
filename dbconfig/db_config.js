@@ -30,6 +30,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/moneyTblInfo', (req, res) => {
+    console.log('moneyTablInfo Called..');
     const sqlQuery = "SELECT DATE_FORMAT(USE_DATE, '%Y-%m-%d') as USE_DATE, AMOUNT, IO_TYPE FROM money";
     
     db.query(sqlQuery, (err, data) => {
@@ -44,6 +45,7 @@ app.get('/api/moneyTblInfo', (req, res) => {
 });
 
 app.post('/api/registerAccount', (req, res) => {
+    console.log('registerAccount Called..');
     const user_id = req.body.id;
     const user_pw = req.body.password;
     const user_name = req.body.name;
