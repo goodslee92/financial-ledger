@@ -1,7 +1,6 @@
 import './App.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Nav from './components/common/nav/nav';
 import Footer from './components/common/footer/footer';
 import Home from './components/views/home/home';
 import Daily from './components/views/daily/daily';
