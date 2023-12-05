@@ -33,7 +33,7 @@ const Home = () => {
     
       const memoizedDispatches = useMemo(() => {
         return { onAdd, onRemove };
-      }, []);
+      }, [onAdd, onRemove]);
     
       const memoizedNextItemId = useMemo(() => {
         return { nextItemId };
