@@ -5,10 +5,10 @@ function Nav() {
     return (
         <div>
             <div className="navbar">
-                <Link className="navbarMenu" to={'/'}>Home</Link>
-                <Link className="navbarMenu" to={'/calendar'}>달력</Link>
-                <Link className="navbarMenu" to={'/daily'}>일일</Link>
-                <Link className="navbarMenu" to={'/statistics'}>통계</Link>
+                <Link className="navbarMenu" to={'/Home'}>내역 추가</Link>
+                <Link className="navbarMenu" to={'/Calendar'}>달력</Link>
+                <Link className="navbarMenu" to={'/Daily'}>일일</Link>
+                <Link className="navbarMenu" to={'/Statistics'}>통계</Link>
             </div>
         </div>
     );
