@@ -3,8 +3,9 @@ import { subMonths, addMonths } from 'date-fns';
 import CalendarHeader from './calendarHeader';
 import CalendarDays from './calendarDays';
 import CalendarCells from './calendarCells';
-import Header from '../../common/header/header';
+import HeaderAmount from '../../common/header/header_amount';
 import Nav from '../../common/nav/nav'
+import HeaderTitle from '../../common/header/header title';
 
 export const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -21,8 +22,9 @@ export const Calendar = () => {
     };
     return (
         <div className="calendar">
+            <HeaderTitle />
             <Nav />
-            <Header income={'13579'} outcome={'24680'} sum={'1234567890'}/>
+            <HeaderAmount income={'13579'} outcome={'24680'} sum={'1234567890'}/>
             <CalendarHeader currentMonth={currentMonth} prevMonth={() => prevMonth()} nextMonth={() => nextMonth()} />
             <CalendarDays />
             <CalendarCells currentMonth={currentMonth} selectedDate={selectedDate} onDateClick={() => onDateClick()} />

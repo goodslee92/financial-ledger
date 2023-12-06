@@ -1,9 +1,10 @@
 import { enteredOnlyNumber, addComma, deleteComma } from '../../../utils/numberUtils';
 import { CancleContext, RegisterContext } from '../home/home.js';
 import React, { useCallback, useContext, useState } from "react";
+import axios from "axios";
 
 const NewItem = () => {
-    /** 날짜 */
+    // 날짜
     const [enteredDate, setEnteredDate] = useState("");
     const dateChangeHandler = (event) => {
         setEnteredDate(event.target.value);
@@ -11,7 +12,7 @@ const NewItem = () => {
     const getDate = useCallback(() => {
         return new Date().toISOString().substring(0, 10);
     }, []);
-    /** 내역 */
+    // 내역
     // 내역 최대 길이
     const item_title_length = 35;
     const [isTitleSizeOver, setIsItemSizeOver] = useState(false);
@@ -22,7 +23,7 @@ const NewItem = () => {
     
         setEnteredItem(event.target.value);
       };
-    /** 금액 */
+    // 금액
     const [enteredAmount, setEnteredAmount] = useState("");
     // const [isEnteredWrongAmount, setIsEnteredWrongAmount] = useState(false);
     const amountChangeHandler = (event) => {
@@ -35,12 +36,12 @@ const NewItem = () => {
         let amount = addComma(enteredOnlyNumber(event.target.value));
         setEnteredAmount(amount);
     };
-    /** 구분(수입, 지출) */
-    const [enteredAmountType, setEnteredAmountType] = useState("income");
-    const amountTypeChangeHandler = (event) => {
-        setEnteredAmountType(event.target.value);
+    // 구분(수입, 지출)
+    const [entredIoType, setEnteredIoType] = useState("income");
+    const ioTypeChangeHandler = (event) => {
+        setEnteredIoType(event.target.value);
     };
-    /** 등록,취소 */
+    // 등록,취소
     const [{ onAdd }, { nextItemId }] = useContext(RegisterContext);
     const { cancleHandler } = useContext(CancleContext);
 
@@ -52,7 +53,7 @@ const NewItem = () => {
             date: new Date(enteredDate),
             title: enteredTitle,
             amount: deleteComma(enteredAmount),
-            amountType: enteredAmountType,
+            amountType: entredIoType,
         };
 
         onAdd(enteredData); // 부모 컴포넌트로 입력 데이터 전달
@@ -61,9 +62,32 @@ const NewItem = () => {
         setEnteredDate("");
         setEnteredItem("");
         setEnteredAmount("");
-        setEnteredAmountType("income");
+        setEnteredIoType("income");
 
         // cancleHandler();
+    }
+    const data = {
+        // user_id: loginId,
+        amount: enteredAmount,
+        use_date: enteredDate,
+        title: enteredTitle,
+        io_type: entredIoType,
+    }
+    const registerNewItemHandler = () => {
+        console.log(
+            // "user_id: " + loginId + 
+            ", amount: " + enteredAmount + ", use_date: " + enteredDate
+            + ", title: " + enteredTitle + "io_type: " + entredIoType)
+        const fetchData = async () => {
+            await axios.post('http://localhost:3001/api/addNewItem', data)
+                .then(res => {
+                    console.log(res.data)
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+        fetchData();
+        alert("내역이 추가 되었습니다.");
     }
     return (
         <div className="new-item">
@@ -93,23 +117,23 @@ const NewItem = () => {
                 <div className="amount_type">
                     <div className="amount_income">
                         <input 
-                            type="radio" id="income" name="amount_type_income" value="income" onChange={amountTypeChangeHandler}
-                            checked={enteredAmountType === "income" || ""}
+                            type="radio" id="income" name="amount_type_income" value="income" onChange={ioTypeChangeHandler}
+                            checked={entredIoType === "income" || ""}
                         />
                         <label htmlFor="income" className="fs-small">수입</label>
                     </div>
 
                     <div className="amount_expense">
                         <input 
-                            type="radio" id="expense" name="amount_type_expense" value="expense" onChange={amountTypeChangeHandler}
-                            checked={enteredAmountType === "expense" || ""}
+                            type="radio" id="expense" name="amount_type_expense" value="expense" onChange={ioTypeChangeHandler}
+                            checked={entredIoType === "expense" || ""}
                         />
                         <label htmlFor="expense" className="fs-small">지출</label>
                     </div>
                 </div>
 
                 <div className="new-item_form-actions">
-                    <button type="submit" className="btn-blue btn-register">등록</button>
+                    <button type="submit" className="btn-blue btn-register" onClick={registerNewItemHandler}>등록</button>
                     <button type="button" className="btn-white btn-cancle" onClick={cancleHandler}>취소</button>
                 </div>
             </form>

@@ -1,8 +1,8 @@
 import { addComma } from '../../../utils/numberUtils';
 
-const Header = (props) => {
+const HeaderAmount = (props) => {
     return (
-        <header className="header">
+        <header className="header_amount">
             <div className="incomeTitle">
                 <span>수입</span> 
                 <strong className="incomeValue">
@@ -25,4 +25,4 @@ const Header = (props) => {
     )
 }
 
-export default Header
+export default HeaderAmount

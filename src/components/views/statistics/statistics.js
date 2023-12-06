@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select"
 import './statistics.scss';
-import Header from '../../common/header/header';
+import HeaderAmount from '../../common/header/header_amount';
 import { addComma } from '../../../utils/numberUtils';
 import { getTblInfo } from "../../../api/statistics_api";
 import Nav from '../../common/nav/nav'
+import HeaderTitle from "../../common/header/header title";
 
 const Dropdown = () => {
     useEffect(() => {
@@ -23,15 +24,16 @@ const Dropdown = () => {
 
     return (
         <div className="statistics_root_container">
+            <HeaderTitle />
             <Nav />
             <div className="statistics_container">
-                <Header income={'13579'} outcome={'24680'} sum={'1234567890'}/>
+                <HeaderAmount income={'13579'} outcome={'24680'} sum={'1234567890'}/>
                 <div className="dropDown_container">
                     <div className="select_div">
                         <Select defaultValue={options[0]} options={options} className="select" onChange={handleOnChange} />
                     </div>
                 </div>
-                <div className="content_container">
+                <div className="statistics_content_container">
                     {
                         dummy.map((content, index) => {
                             return (

@@ -1,9 +1,10 @@
-import Header from '../../common/header/header'
+import HeaderAmount from '../../common/header/header_amount'
 import { useState, useEffect } from "react"
 import { addComma } from '../../../utils/numberUtils'
 import Nav from '../../common/nav/nav'
 import './daily.scss'
 import axios from 'axios'
+import HeaderTitle from '../../common/header/header title'
 
 let total = { sum: 0, income: 0, outcome: 0}
 
@@ -36,11 +37,11 @@ const Daily = () => {
 
     return (
         <div className='daily_root_container'>
+            <HeaderTitle />
             <Nav />
             <div className="daily">
-                
-                <Header income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()} />
-                <div className="content_container">
+                <HeaderAmount income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()} />
+                <div className="daily_content_container">
                     {
                         financialList && financialList.map((content, index) => {
                             if (content.IO_TYPE === 'I') {

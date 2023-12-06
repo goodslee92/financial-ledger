@@ -1,6 +1,7 @@
 import NewItem from '../newItem/newItem'
 import React, { useState, useMemo, useCallback, createContext } from "react";
 import Nav from '../../common/nav/nav'
+import HeaderTitle from '../../common/header/header title';
 
 export const RegisterContext = createContext();
 export const CancleContext = createContext();
@@ -42,6 +43,7 @@ const Home = () => {
 
     return (
         <RegisterContext.Provider value={[memoizedDispatches, memoizedNextItemId]}>
+            <HeaderTitle />
             <Nav />
             <div className="home">
                 { !isVisibility && (
