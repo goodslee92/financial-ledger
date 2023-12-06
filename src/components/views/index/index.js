@@ -31,12 +31,14 @@ function Index() {
                 console.log(res.data)
                 setUserInfo(res.data)
                 alert(res.data[0].user_name + "님 반갑습니다.");
+                navigate('/Home');
             }).catch(err => {
                 console.log(err)
+                alert("ID 또는 비밀번호를 확인하세요.");
             })
         }
         fetchData()
-        navigate('/Home');
+        
     }
     return (
         <div className="root_container">
