@@ -19,7 +19,7 @@ const HeaderTitle = () => {
         }
     }
     return (
-        <div className="header_title">
+        <div className="header_title_container">
             <span className="loginUserName">
                 {
                     sessionStorage.getItem('loginUserName') === null ? 'Guest' : sessionStorage.getItem('loginUserName')
