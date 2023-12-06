@@ -53,8 +53,8 @@ const Daily = () => {
                             return (
                                 <div className="row_container" key={index}>
                                     <p className="date">{content.USE_DATE}</p>
-                                    <p className="income">{content.IO_TYPE === 'I' ? addComma(content.AMOUNT) : 0}원</p>
-                                    <p className="outcome">{content.IO_TYPE === 'O' ? addComma(content.AMOUNT) : 0}원</p>
+                                    <p className="income">+{content.IO_TYPE === 'I' ? addComma(content.AMOUNT) : 0}원</p>
+                                    <p className="outcome">-{content.IO_TYPE === 'O' ? addComma(content.AMOUNT) : 0}원</p>
                                 </div>
                             )
                         })
