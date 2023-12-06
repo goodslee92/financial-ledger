@@ -24,9 +24,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Index />}/>
           <Route path="/Home" element={<Home />}/>
-          <Route path="/calendar" element={<Calendar />}/>
-          <Route path="/daily" element={<Daily />}/>
-          <Route path="/statistics" element={<Statistics />}/>
+          <Route path="/Calendar" element={<Calendar />}/>
+          <Route path="/Daily" element={<Daily />}/>
+          <Route path="/Statistics" element={<Statistics />}/>
           <Route path="/SignUp" element={<SignUp />} />
         </Routes>
         
