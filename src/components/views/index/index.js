@@ -10,13 +10,13 @@ function Index() {
     const navigateToSignUp = () => {
         navigate("/SignUp");
     }
-    const [id, setId] = useState();
+    const [enteredId, setEnteredId] = useState();
     const idChangeHandler = (event) => {
-        setId(event.target.value);
+        setEnteredId(event.target.value);
     };
-    const [password, setPassword] = useState();
+    const [enteredPw, setEnteredPw] = useState();
     const passwordChangeHandler = (event) => {
-        setPassword(event.target.value);
+        setEnteredPw(event.target.value);
     };
     const navigation = () => {
         const path = sessionStorage.getItem('prevPath');
@@ -37,8 +37,8 @@ function Index() {
         }
     }
     const data = {
-        id : id,
-        password : password,
+        id : enteredId,
+        password : enteredPw,
     };
     // 세션 스토리지
     const sessionStorage = window.sessionStorage;
@@ -49,11 +49,15 @@ function Index() {
             await axios.post('http://localhost:3001/api/loginMemberInfo', data)
             .then(res => {
                 console.log(res.data)
-                alert(res.data[0].user_name + "님 반갑습니다.");
-                sessionStorage.setItem("loginUserId", res.data[0].user_id)
-                sessionStorage.setItem("loginUserName", res.data[0].user_name)
-                console.log("loginId: " + sessionStorage.getItem("loginUserId"));
-                navigation()
+                if (res.data[0].user_pw === enteredPw) {
+                    alert(res.data[0].user_name + "님 반갑습니다.");
+                    sessionStorage.setItem("loginUserId", res.data[0].user_id)
+                    sessionStorage.setItem("loginUserName", res.data[0].user_name)
+                    console.log("loginId: " + sessionStorage.getItem("loginUserId"));
+                    navigation()
+                } else {
+                    alert("ID 또는 비밀번호를 확인하세요.");
+                }
             }).catch(err => {
                 console.log(err)
                 alert("ID 또는 비밀번호를 확인하세요.");
