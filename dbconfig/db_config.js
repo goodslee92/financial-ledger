@@ -50,7 +50,6 @@ app.post('/api/loginMemberInfo', (req, res) => {
     console.log('get loginMemberInfo Called..');
     const user_id = req.body.id;
     console.log('user_id : ' + user_id);
-    // const sqlQuery = "SELECT user_id, user_pw, user_name FROM member where user_id = ?";
     const sqlQuery = "SELECT user_id, user_pw, user_name FROM member where user_id = ?"
 
     db.query(sqlQuery, [user_id], (err, data) => {
