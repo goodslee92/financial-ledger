@@ -4,6 +4,8 @@
 .calendar {
     @include common.size(100%, 80%);
     .calendarHeader {
+        margin-top: 10px;
+        margin-bottom: 10px;
         @include common.size(100%, 10%);
         @include common.flex-row(space-between, baseline);
         .col.col-left {
@@ -64,7 +66,7 @@
         @include common.size(100%, 89%);
         @include common.flex-column();
         .row {
-            @include common.size(100%, 100%);
+            @include common.size(100%, 100px);
             @include common.flex-row(space-between, center);
             .col {
                 @include common.size(13.5%, 93%);
