@@ -83,6 +83,29 @@ app.post('/api/registerAccount', (req, res) => {
     });
 });
 
+// 내역 추가.
+app.post('/api/addNewItem', (req, res) => {
+    console.log('post addNewItem Called..');
+    const user_id = req.body.id
+    const amount = req.body.amount;
+    const use_date = req.body.use_date;
+    const title = req.body.title;
+    const io_type = req.body.io_type;
+    console.log("user_id : " + user_id + ", amount : " + amount + ", use_date : " + use_date
+        + ", title : " + title + ", io_type : " + io_type);
+
+    const sqlQuery = "INSERT INTO money (user_id, amount, use_date, title, io_type) VALUES (?, ?, ?, ?, ?)";
+    db.query(sqlQuery, [user_id, amount, use_date, title, io_type], (err, data) => {
+        if(err) {
+            console.log('err');
+            res.send(err);
+        } else {
+            console.log('success');
+            res.send(data);
+        }
+    });
+});
+
 app.listen(port, ()=>{
     console.log(`Connect at http://localhost:${port}`);
 });

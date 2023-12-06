@@ -1,4 +1,5 @@
 @use '../../../styles/theme.scss';
+@use '../../../styles//common.scss' as common;
 
 .header_amount {
     display: flex;
@@ -32,17 +33,13 @@
     background-color: #f4e7e3;
     border-bottom: 1px solid black;
     width: 100%;
+    @include common.flex-row(space-between, baseline);
 }
 
 .loginUserName {
-    justify-content: flex-start;
-}
-
-.headerTitleH3 {
-    justify-content: center;
-
+    color: black;
 }
 
 .logInOutBtn {
-    justify-content: flex-end;
+    height: 10%;
 }
