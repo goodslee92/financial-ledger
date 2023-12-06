@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import './authform.scss';
+import React, {useState} from 'react';
+import './signup.scss';
 import axios from "axios";
 import { useNavigate } from "react-router-native";
 
-const AuthForm = ({type}) => {
-    console.log("type : " + type)
+const SignUp = () => {
     const navigate = useNavigate();
     const [name, setName] = useState();
     const nameChangeHandler = (event) => {
@@ -30,8 +29,6 @@ const AuthForm = ({type}) => {
         name : name,
     };
     const onClickHandler = () => {
-        console.log("type : " + type)
-        if (type === 'SignUp') {
             const fetchData = async () => {
                 await axios.post('http://localhost:3001/api/registerAccount', data)
                     .then(res => {
@@ -41,38 +38,30 @@ const AuthForm = ({type}) => {
                     })
             }
             fetchData();
-            alert("회원가입 완료.");
+            alert(data.name + "님의 가입을 환영합니다.");
             navigate('/');
-        } else {
-            // TODO NOT YET IMPLEMENTED.
-        }
-
     }
     return (
         <div>
             <div>
-                <h1>{type === 'SignUp' ? 'Sign Up' : 'Log In'}</h1>
+                <h1>Sign Up</h1>
             </div>
             <div className='inputList'>
-                {
-                    type === 'SignUp' && <input className='name' name='name' type="name" placeholder='이름' onChange={nameChangeHandler} />
-                }
+                <input className='name' name='name' type="name" placeholder='이름' onChange={nameChangeHandler} />
                 <input className='id' name='id' type="id" placeholder='아이디' onChange={idChangeHandler} />
                 <input className='password' name='password' type="password" placeholder='비밀번호' onChange={passwordChangeHandler} />
-                {
-                    type === 'SignUp' &&
-                    <input className='passwordCheck' name='passwordCheck' type="password" placeholder='비밀번호 확인' onChange={passwordCheckChangeHandler} />
-                }
+                <input className='passwordCheck' name='passwordCheck' type="password" placeholder='비밀번호 확인' onChange={passwordCheckChangeHandler} />
                 {
                     !isPasswordSame &&
                     <span>비밀번호가 일치하지 않습니다.</span>
                 }
-                <button className="btn-signup btn-gray" onClick={onClickHandler} disabled={(id === null || password === null || !isPasswordSame)}>
-                    {type === 'SignUp' ? 'Sign Up' : 'Log In'}
+                <button className="btn-signup btn-gray" onClick={onClickHandler} 
+                    disabled={(id === null || password === null || !isPasswordSame)}>
+                    Sign Up
                 </button>
             </div>
         </div>
     );
 };
 
-export default AuthForm;
+export default SignUp;
