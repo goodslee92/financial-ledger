@@ -19,7 +19,7 @@ const Dropdown = () => {
     const handleOnChange = (e) => {
         setSelectedValue(e.value);
     }
-    const [dummy, setDummy] = useState([['11.5 ~ 11.11', '+12345', '-10000'],['11.12 ~ 11.18', '+24680', '-20000'],['11.19 ~ 11.25', '+987654321', '-13579123']]);
+    const [dummy, setDummy] = useState([['11.5 ~ 11.11', '12345', '10000'],['11.12 ~ 11.18', '24680', '20000'],['11.19 ~ 11.25', '987654321', '13579123']]);
 
     return (
         <div className="statistics_root_container">
@@ -37,8 +37,8 @@ const Dropdown = () => {
                             return (
                                 <div className="row_container" key={index}>
                                     <p className="period">{content[0]}</p>
-                                    <p className="income">{addComma(content[1])}원</p>
-                                    <p className="outcome">{addComma(content[2])}원</p>
+                                    <p className="income">+{addComma(content[1])}원</p>
+                                    <p className="outcome">-{addComma(content[2])}원</p>
                                 </div>
                             )
                         })
