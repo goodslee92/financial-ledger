@@ -4,6 +4,7 @@ import CalendarHeader from './calendarHeader';
 import CalendarDays from './calendarDays';
 import CalendarCells from './calendarCells';
 import Header from '../../common/header/header';
+import Nav from '../../common/nav/nav'
 
 export const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -20,6 +21,7 @@ export const Calendar = () => {
     };
     return (
         <div className="calendar">
+            <Nav />
             <Header income={'13579'} outcome={'24680'} sum={'1234567890'}/>
             <CalendarHeader currentMonth={currentMonth} prevMonth={() => prevMonth()} nextMonth={() => nextMonth()} />
             <CalendarDays />

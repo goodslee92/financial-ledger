@@ -1,5 +1,6 @@
 import NewItem from '../newItem/newItem'
 import React, { useState, useMemo, useCallback, createContext } from "react";
+import Nav from '../../common/nav/nav'
 
 export const RegisterContext = createContext();
 export const CancleContext = createContext();
@@ -41,6 +42,7 @@ const Home = () => {
 
     return (
         <RegisterContext.Provider value={[memoizedDispatches, memoizedNextItemId]}>
+            <Nav />
             <div className="home">
                 { !isVisibility && (
                     <button className="add-new-item-button" onClick={startNewItemHandler}>내역 추가하기</button>
