@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-native";
+import { useNavigate } from "react-router-native";
 import { useLocation } from 'react-router-dom';
 
 const HeaderTitle = () => {
@@ -25,7 +25,7 @@ const HeaderTitle = () => {
                     sessionStorage.getItem('loginUserName') === null ? 'Guest' : sessionStorage.getItem('loginUserName')
                 } 님
             </span>
-            <h3 className="headerTitleH3">가계부</h3>
+            <h3 className="headerTitleH3">타이틀</h3>
             <button className="logInOutBtn btn-gray" onClick={logInOutBtnOnclickHandler}>
                 {
                     sessionStorage.getItem('loginUserName') === null ? 'Login' : 'Logout'

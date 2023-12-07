@@ -5,7 +5,7 @@ import HeaderAmount from '../../common/header/header_amount';
 import { addComma } from '../../../utils/numberUtils';
 import { getTblInfo } from "../../../api/statistics_api";
 import Nav from '../../common/nav/nav'
-import HeaderTitle from "../../common/header/header title";
+import HeaderTitle from "../../common/header/header_title";
 
 const Dropdown = () => {
     useEffect(() => {

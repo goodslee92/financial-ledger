@@ -4,7 +4,7 @@ import { addComma } from '../../../utils/numberUtils'
 import Nav from '../../common/nav/nav'
 import './daily.scss'
 import axios from 'axios'
-import HeaderTitle from '../../common/header/header title'
+import HeaderTitle from '../../common/header/header_title'
 
 let total = { sum: 0, income: 0, outcome: 0}
 

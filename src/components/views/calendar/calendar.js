@@ -5,7 +5,7 @@ import CalendarDays from './calendarDays';
 import CalendarCells from './calendarCells';
 import HeaderAmount from '../../common/header/header_amount';
 import Nav from '../../common/nav/nav'
-import HeaderTitle from '../../common/header/header title';
+import HeaderTitle from '../../common/header/header_title';
 
 export const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date());
