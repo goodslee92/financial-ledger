@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-native";
+import { useNavigate } from "react-router-native";
 import React, {useState} from 'react';
 import axios from "axios";
 import './index.scss';

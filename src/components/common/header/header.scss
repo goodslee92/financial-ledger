@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-.incomeTitle, .expenseTitle, .totalTitle {
+.incomeTitle, .outcomeTitle, .totalTitle {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,7 +22,7 @@
     color: theme.$light-green;
 }
 
-.expenseValue {
+.outcomeValue {
     color: theme.$light-red;
 }
 

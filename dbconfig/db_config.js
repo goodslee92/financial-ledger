@@ -30,11 +30,13 @@ app.get('/', (req, res) => {
 });
 
 // 자산 사용 내역 조회.
-app.get('/api/moneyTblInfo', (req, res) => {
+app.post('/api/moneyTblInfo', (req, res) => {
     console.log('get moneyTablInfo Called..');
-    const sqlQuery = "SELECT DATE_FORMAT(USE_DATE, '%Y-%m-%d') as USE_DATE, AMOUNT, IO_TYPE FROM money";
+    const user_id = req.body.id;
+    console.log('user_id : ' + user_id);
+    const sqlQuery = "SELECT DATE_FORMAT(USE_DATE, '%Y-%m-%d') as USE_DATE, AMOUNT, IO_TYPE FROM money WHERE user_id = ? ORDER BY use_date";
     
-    db.query(sqlQuery, (err, data) => {
+    db.query(sqlQuery, [user_id] ,(err, data) => {
         if (err) {
             console.log('err');
             res.send(err);
@@ -50,7 +52,7 @@ app.post('/api/loginMemberInfo', (req, res) => {
     console.log('get loginMemberInfo Called..');
     const user_id = req.body.id;
     console.log('user_id : ' + user_id);
-    const sqlQuery = "SELECT user_id, user_pw, user_name FROM member where user_id = ?"
+    const sqlQuery = "SELECT user_id, user_pw, user_name FROM member WHERE user_id = ?"
 
     db.query(sqlQuery, [user_id], (err, data) => {
         if (err) {
@@ -86,7 +88,7 @@ app.post('/api/registerAccount', (req, res) => {
 // 내역 추가.
 app.post('/api/addNewItem', (req, res) => {
     console.log('post addNewItem Called..');
-    const user_id = req.body.id
+    const user_id = req.body.user_id
     const amount = req.body.amount;
     const use_date = req.body.use_date;
     const title = req.body.title;

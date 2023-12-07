@@ -46,19 +46,19 @@
     margin-right: 10px;
 }
 
-.amount_expense {
+.amount_outcome {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .amount__income input[type='radio'],
-.amount__expense input[type='radio'] {
+.amount__outcome input[type='radio'] {
   margin-right: 2px;
   accent-color: #808080;
 }
 
 .amount__income input[type='radio']:checked,
-.amount__expense input[type='radio']:checked {
+.amount__outcome input[type='radio']:checked {
   accent-color: #5D5FEF;
 }
 

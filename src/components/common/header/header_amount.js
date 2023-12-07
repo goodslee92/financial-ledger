@@ -9,9 +9,9 @@ const HeaderAmount = (props) => {
                     {addComma(props.income)}원
                 </strong>
             </div>
-            <div className="expenseTitle">
+            <div className="outcomeTitle">
                 <span>지출</span>
-                <strong className="expenseValue">
+                <strong className="outcomeValue">
                     {addComma(props.outcome)}원
                 </strong>
             </div>

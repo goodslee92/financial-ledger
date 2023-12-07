@@ -6,8 +6,6 @@ import './daily.scss'
 import axios from 'axios'
 import HeaderTitle from '../../common/header/header_title'
 
-let total = { sum: 0, income: 0, outcome: 0}
-
 const Daily = () => {
     const [financialList, setFinancialList] = useState()
     const [totalSum, setTotalSum ] = useState(0)
@@ -15,9 +13,12 @@ const Daily = () => {
     const [totalOutcome, setTotalOutcome] = useState(0)
     const total = { sum: 0, income: 0, outcome: 0 }
     
+    const data = {
+        id: window.sessionStorage.getItem('loginUserId')
+    }
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('http://localhost:3001/api/moneyTblInfo')
+            await axios.post('http://localhost:3001/api/moneyTblInfo', data)
             .then(res => {
                 console.log(res.data)
                 setFinancialList(res.data)
@@ -61,9 +62,6 @@ const Daily = () => {
                         })
                     }
                 </div>
-                {console.log('totalincome : ' + totalIncome)}
-                {console.log('totaloutcome : ' + totalOutcome)}
-                {console.log('totalsum : ' + totalSum)}
             </div>
         </div>
     )
