@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Select from "react-select"
 import './statistics.scss';
 import HeaderAmount from '../../common/header/header_amount';
 import { addComma } from '../../../utils/numberUtils';
-import { getTblInfo } from "../../../api/statistics_api";
 import Nav from '../../common/nav/nav'
 import HeaderTitle from "../../common/header/header_title";
 
 const Dropdown = () => {
-    useEffect(() => {
-        getTblInfo()
-    })
     const options = [
         { value: "주간", label: "주간" },
         { value: "월간", label: "월간" },
