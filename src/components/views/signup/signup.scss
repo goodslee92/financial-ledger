@@ -4,7 +4,15 @@ h1 {
   text-align: center;
 }
 
-.inputList {
+// .inputList {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   margin: auto;
+//   width: 15%;
+// }
+
+.name, .password, .passwordCheck {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,19 +20,40 @@ h1 {
   width: 15%;
 }
 
+.id {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: auto;
+  width: 10%;
+  margin-top: 5px;
+}
+
+.btn_checkId {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: auto;
+  width: 5%;
+}
 
 span {
   margin: 1px 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 15%;
 }
 
-.id {
-  margin-top: 5px;
-}
 .passwordCheck {
   margin-top: 5px;
 }
 
 .btn-signup {
   margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: fit-content;
 }

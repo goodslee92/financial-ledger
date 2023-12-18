@@ -85,6 +85,24 @@ app.post('/api/registerAccount', (req, res) => {
     });
 });
 
+// ID 중복 체크.
+app.post('/api/checkId', (req, res) => {
+    console.log('post checkId Called..');
+    const user_id = req.body.id;
+    console.log("user_id : " + user_id);
+
+    const sqlQuery = "SELECT user_id FROM member WHERE user_id = ?";
+    db.query(sqlQuery, [user_id], (err, data) => {
+        if(err) {
+            console.log('err');
+            res.send(err);
+        } else {
+            console.log('success');
+            res.send(data);
+        }
+    });
+});
+
 // 내역 추가.
 app.post('/api/addNewItem', (req, res) => {
     console.log('post addNewItem Called..');

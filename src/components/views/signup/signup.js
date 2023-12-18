@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-native";
 
 const SignUp = () => {
     const navigate = useNavigate();
-    const [name, setName] = useState();
+    const [name, setName] = useState('');
     const nameChangeHandler = (event) => {
         setName(event.target.value);
     };
@@ -13,7 +13,7 @@ const SignUp = () => {
     const idChangeHandler = (event) => {
         setId(event.target.value);
     };
-    const [password, setPassword] = useState();
+    const [password, setPassword] = useState('');
     const passwordChangeHandler = (event) => {
         setPassword(event.target.value);
     };
@@ -41,6 +41,22 @@ const SignUp = () => {
             alert(data.name + "님의 가입을 환영합니다.");
             navigate('/');
     }
+    const checkIdHandler = () => {
+        const fetchData = async () => {
+            await axios.post('http://localhost:3001/api/checkId', data)
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data[0] == undefined) {
+                        alert('사용 가능한 ID입니다')
+                    } else {
+                        alert('이미 존재하는 ID입니다')
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+        fetchData();
+}
     return (
         <div>
             <div>
@@ -49,6 +65,7 @@ const SignUp = () => {
             <div className='inputList'>
                 <input className='name' name='name' type="name" placeholder='이름' onChange={nameChangeHandler} />
                 <input className='id' name='id' type="id" placeholder='아이디' onChange={idChangeHandler} />
+                <button className='btn_checkId btn-gray' onClick={checkIdHandler}>중복 확인</button>
                 <input className='password' name='password' type="password" placeholder='비밀번호' onChange={passwordChangeHandler} />
                 <input className='passwordCheck' name='passwordCheck' type="password" placeholder='비밀번호 확인' onChange={passwordCheckChangeHandler} />
                 {
