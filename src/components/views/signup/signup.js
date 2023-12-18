@@ -64,12 +64,12 @@ const SignUp = () => {
             </div>
             <div className='inputList'>
                 <input className='name' name='name' type="name" placeholder='이름' onChange={nameChangeHandler} />
-                <div className='id_container'>
-                    <input className='id' name='id' type="id" placeholder='아이디' onChange={idChangeHandler} />
+                <div className='su_id_container'>
+                    <input className='su_id' name='id' type="id" placeholder='아이디' onChange={idChangeHandler} />
                     <button className='btn_checkId btn-gray' onClick={checkIdHandler}>중복 확인</button>
                 </div>
-                <input className='password' name='password' type="password" placeholder='비밀번호' onChange={passwordChangeHandler} />
-                <input className='passwordCheck' name='passwordCheck' type="password" placeholder='비밀번호 확인' onChange={passwordCheckChangeHandler} />
+                <input className='su_password' name='password' type="password" placeholder='비밀번호' onChange={passwordChangeHandler} />
+                <input className='su_passwordCheck' name='passwordCheck' type="password" placeholder='비밀번호 확인' onChange={passwordCheckChangeHandler} />
                 {
                     !isPasswordSame &&
                     <span>비밀번호가 일치하지 않습니다.</span>
