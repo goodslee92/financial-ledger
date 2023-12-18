@@ -46,7 +46,7 @@ const SignUp = () => {
             await axios.post('http://localhost:3001/api/checkId', data)
                 .then(res => {
                     console.log(res.data)
-                    if (res.data[0] == undefined) {
+                    if (res.data[0] === undefined) {
                         alert('사용 가능한 ID입니다')
                     } else {
                         alert('이미 존재하는 ID입니다')
