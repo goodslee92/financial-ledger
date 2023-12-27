@@ -72,7 +72,7 @@ const SignUp = () => {
                 <input className='su_passwordCheck' name='passwordCheck' type="password" placeholder='비밀번호 확인' onChange={passwordCheckChangeHandler} />
                 {
                     !isPasswordSame &&
-                    <span>비밀번호가 일치하지 않습니다.</span>
+                    <span className='su_password_check_msg'>비밀번호가 일치하지 않습니다.</span>
                 }
                 <button className="btn-signup btn-gray" onClick={onClickHandler} 
                     disabled={(id === null || password === null || !isPasswordSame)}>
