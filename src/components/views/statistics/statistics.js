@@ -57,8 +57,9 @@ const Dropdown = () => {
         }
     }
     useEffect(() => {
+        console.log('selectWeekendItem API called..')
         const fetchData = async () => {
-            await axios.post('http://localhost:3001/api/selectMonthlyItem', data)
+            await axios.post('http://localhost:3001/api/selectWeekendItem', data)
             .then(res => {
                 console.log(res.data)
                 setFinancialList(res.data)
@@ -69,6 +70,7 @@ const Dropdown = () => {
         fetchData()
     }, [])
     const calcTotalIncome = () => {
+        console.log('calcTotalIncome called..')
         financialList && financialList.map((content, index) => {
             total.income += content.TOTAL_INCOME 
             total.outcome += content.TOTAL_OUTCOME
@@ -98,23 +100,14 @@ const Dropdown = () => {
                         financialList && financialList.map((content, index) => {
                             return (
                                 <div className="row_container" key={index}>
-                                    {console.log("selectedPeriod ; " + selectedPeriod)}
                                     <p className="date">
                                         {
                                             selectedPeriod === '주간' ? 
-                                            '주간' : 
-                                            (selectedPeriod === '월간' ? content.MONTH+'월' : content.YEAR+'년')
+                                            (content.WEEK_START + ' ~ ' + content.WEEK_END) : 
+                                            (selectedPeriod === '월간' ? content.MONTH + '월' : content.YEAR + '년')
                                         }
                                     </p>
-                                    <p className="income">
-                                        +
-                                        {
-                                            selectedPeriod === '주간' ? 
-                                            '주간' : 
-                                            (selectedPeriod === '월간' ? addComma(content.TOTAL_INCOME.toString()) : addComma(content.TOTAL_INCOME.toString()))
-                                        }
-                                        원
-                                    </p>
+                                    <p className="income">+{addComma(content.TOTAL_INCOME.toString())}원</p>
                                     <p className="outcome">-{addComma(content.TOTAL_OUTCOME.toString())}원</p>
                                 </div>
                             )

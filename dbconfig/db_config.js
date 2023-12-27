@@ -125,7 +125,31 @@ app.post('/api/addNewItem', (req, res) => {
         }
     });
 });
-// 월별 내역 조회.
+
+// 주간별 내역 합산 조회.
+app.post('/api/selectWeekendItem', (req, res) => {
+    console.log('post selectWeekendItem Called..');
+    const user_id = req.body.id;
+    console.log("user_id : " + user_id);
+
+    const sqlQuery = "Select date_format(use_date, '%Y-%m') as WEEKEND, " +
+        "date_format(date_sub(use_date, INTERVAL (DAYOFWEEK(use_date) - 1) DAY), '%Y/%m/%d') AS WEEK_START, " +
+        "date_format(date_sub(use_date, INTERVAL (dayofweek(use_date) - 7) DAY), '%Y/%m/%d') AS WEEK_END, " +
+        "SUM(CASE WHEN IO_TYPE = 'I' THEN AMOUNT ELSE 0 END) AS TOTAL_INCOME, " +
+        "SUM(CASE WHEN IO_TYPE = 'O' THEN AMOUNT ELSE 0 END) AS TOTAL_OUTCOME " +
+        "FROM money WHERE USER_ID = ? GROUP BY WEEKEND"
+    db.query(sqlQuery, [user_id], (err, data) => {
+        if(err) {
+            console.log('err');
+            res.send(err);
+        } else {
+            console.log('success');
+            res.send(data);
+        }
+    });
+});
+
+// 월별 내역 합산 조회.
 app.post('/api/selectMonthlyItem', (req, res) => {
     console.log('post selectMonthlyItem Called..');
     const user_id = req.body.id;
@@ -146,7 +170,7 @@ app.post('/api/selectMonthlyItem', (req, res) => {
         }
     });
 });
-// 년도별 내역 조회.
+// 년도별 내역 합산 조회.
 app.post('/api/selectYearlyItem', (req, res) => {
     console.log('post selectYearlyItem Called..');
     const user_id = req.body.id;
