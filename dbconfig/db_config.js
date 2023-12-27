@@ -130,15 +130,20 @@ app.post('/api/addNewItem', (req, res) => {
 app.post('/api/selectWeekendItem', (req, res) => {
     console.log('post selectWeekendItem Called..');
     const user_id = req.body.id;
-    console.log("user_id : " + user_id);
+    const year = req.body.year;
+    console.log("user_id : " + user_id + "year : " + year);
 
-    const sqlQuery = "Select date_format(use_date, '%Y-%m') as WEEKEND, " +
-        "date_format(date_sub(use_date, INTERVAL (DAYOFWEEK(use_date) - 1) DAY), '%Y/%m/%d') AS WEEK_START, " +
-        "date_format(date_sub(use_date, INTERVAL (dayofweek(use_date) - 7) DAY), '%Y/%m/%d') AS WEEK_END, " +
+    const sqlQuery = "Select DATE_FORMAT(week_start, '%Y-%m-%d') AS WEEK_START, " +
+        "DATE_FORMAT(week_end, '%Y-%m-%d') AS WEEK_END, " +
         "SUM(CASE WHEN IO_TYPE = 'I' THEN AMOUNT ELSE 0 END) AS TOTAL_INCOME, " +
         "SUM(CASE WHEN IO_TYPE = 'O' THEN AMOUNT ELSE 0 END) AS TOTAL_OUTCOME " +
-        "FROM money WHERE USER_ID = ? GROUP BY WEEKEND"
-    db.query(sqlQuery, [user_id], (err, data) => {
+        "FROM ( " +
+        "SELECT DATE_SUB(USE_DATE, INTERVAL WEEKDAY(USE_DATE) DAY) AS week_start, " +
+        "DATE_ADD(DATE_SUB(USE_DATE, INTERVAL WEEKDAY(USE_DATE) DAY), INTERVAL 6 DAY) AS week_end, " +
+        "AMOUNT, IO_TYPE " +
+        "FROM money WHERE USER_ID = ? and YEAR(USE_DATE) = ? ) AS weekly_data " +
+        "GROUP BY week_start, week_end"
+    db.query(sqlQuery, [user_id, year], (err, data) => {
         if(err) {
             console.log('err');
             res.send(err);
