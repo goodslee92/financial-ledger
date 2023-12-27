@@ -125,6 +125,47 @@ app.post('/api/addNewItem', (req, res) => {
         }
     });
 });
+// 월별 내역 조회.
+app.post('/api/selectMonthlyItem', (req, res) => {
+    console.log('post selectMonthlyItem Called..');
+    const user_id = req.body.id;
+    const year = req.body.year;
+    console.log("user_id : " + user_id + "year : " + year);
+
+    const sqlQuery = "SELECT YEAR(USE_DATE) AS YEAR, MONTH(USE_DATE) AS MONTH, USER_ID, " +
+        "SUM(CASE WHEN IO_TYPE = 'I' THEN AMOUNT ELSE 0 END) AS TOTAL_INCOME, " +
+        "SUM(CASE WHEN IO_TYPE = 'O' THEN AMOUNT ELSE 0 END) AS TOTAL_OUTCOME " +
+        "FROM money WHERE USER_ID = ? AND YEAR(USE_DATE) = ? GROUP BY MONTH(USE_DATE), USER_ID ORDER BY MONTH(USE_DATE)"
+    db.query(sqlQuery, [user_id, year], (err, data) => {
+        if(err) {
+            console.log('err');
+            res.send(err);
+        } else {
+            console.log('success');
+            res.send(data);
+        }
+    });
+});
+// 년도별 내역 조회.
+app.post('/api/selectYearlyItem', (req, res) => {
+    console.log('post selectYearlyItem Called..');
+    const user_id = req.body.id;
+    console.log("user_id : " + user_id);
+
+    const sqlQuery = "SELECT YEAR(USE_DATE) AS YEAR, USER_ID, " +
+        "SUM(CASE WHEN IO_TYPE = 'I' THEN AMOUNT ELSE 0 END) AS TOTAL_INCOME, " +
+        "SUM(CASE WHEN IO_TYPE = 'O' THEN AMOUNT ELSE 0 END) AS TOTAL_OUTCOME " +
+        "FROM money WHERE USER_ID = ? GROUP BY YEAR(USE_DATE), USER_ID ORDER BY YEAR(USE_DATE)"
+    db.query(sqlQuery, [user_id], (err, data) => {
+        if(err) {
+            console.log('err');
+            res.send(err);
+        } else {
+            console.log('success');
+            res.send(data);
+        }
+    });
+});
 
 app.listen(port, ()=>{
     console.log(`Connect at http://localhost:${port}`);
