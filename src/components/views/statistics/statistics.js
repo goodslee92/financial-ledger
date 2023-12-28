@@ -84,7 +84,7 @@ const Dropdown = () => {
                 fetchYearlyData()
                 break
             default :
-                //주간
+                // 주간
                 const fetchData = async () => {
                     await axios.post(url + '/api/selectWeekendItem', data)
                     .then(res => {
@@ -99,7 +99,7 @@ const Dropdown = () => {
         }
         // 헤더(금액부분) 새로 계산
         calcTotalIncome()
-    }, financialList)
+    }, [financialList])
     
     return (
         <div className="statistics_root_container">
@@ -121,7 +121,7 @@ const Dropdown = () => {
                                         {
                                             selectedPeriod === '주간' ? 
                                             (content.WEEK_START + ' ~ ' + content.WEEK_END) : 
-                                            (selectedPeriod === '월간' ? content.YEAR + '년' + content.MONTH + '월' : content.YEAR + '년')
+                                            (selectedPeriod === '월간' ? content.YEAR + '년 ' + content.MONTH + '월' : content.YEAR + '년')
                                         }
                                     </p>
                                     <p className="income">+{addComma(content.TOTAL_INCOME.toString())}원</p>
