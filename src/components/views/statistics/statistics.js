@@ -26,36 +26,8 @@ const Dropdown = () => {
     const [selectedPeriod, setSelectedPeriod] = useState('주간');
     const handleOnChange = (e) => {
         setSelectedPeriod(e.value);
-        switch (selectedPeriod) {
-            case '월간' :
-                const currentMonth = new Date().getMonth() + 1
-                const fetchMonthlyData = async () => {
-                    await axios.post(url + '/api/selectMonthlyItem', data)
-                    .then(res => {
-                        // console.log(res.data)
-                        // setFinancialList(res.data)
-                    }).catch(err => {
-                        console.log(err)
-                    })
-                }
-                fetchMonthlyData()
-                break
-            case '연간' :
-                const fetchYearlyData = async () => {
-                    await axios.post(url + '/api/selectYearlyItem', data)
-                    .then(res => {
-                        // console.log(res.data)
-                        // setFinancialList(res.data)
-                    }).catch(err => {
-                        console.log(err)
-                    })
-                }
-                fetchYearlyData()
-                break
-            default :   
-                 
-        }
     }
+    // 최초 1회 기본값인 '주간' 데이터 조회 및 화면 렌더링
     useEffect(() => {
         console.log('selectWeekendItem API called..')
         const fetchData = async () => {
@@ -69,6 +41,50 @@ const Dropdown = () => {
         }
         fetchData()
     }, [])
+    // 주간/월간/연간 선택 값 변경때마다 데이터 조회 및 화면 렌더링 새로고침
+    useEffect(() => {
+        console.log('selectedPeriod is changed, selectedPeriod : ' + selectedPeriod)
+        switch (selectedPeriod) {
+            case '월간' :
+                // const currentMonth = new Date().getMonth() + 1
+                const fetchMonthlyData = async () => {
+                    await axios.post(url + '/api/selectMonthlyItem', data)
+                    .then(res => {
+                        console.log(res.data)
+                        setFinancialList(res.data)
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }
+                fetchMonthlyData()
+                break
+            case '연간' :
+                const fetchYearlyData = async () => {
+                    await axios.post(url + '/api/selectYearlyItem', data)
+                    .then(res => {
+                        console.log(res.data)
+                        setFinancialList(res.data)
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }
+                fetchYearlyData()
+                break
+            default :
+                //주간
+                const fetchData = async () => {
+                    await axios.post(url + '/api/selectWeekendItem', data)
+                    .then(res => {
+                        console.log(res.data)
+                        setFinancialList(res.data)
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }
+                fetchData()
+                break
+        }
+    }, selectedPeriod)
     const calcTotalIncome = () => {
         console.log('calcTotalIncome called..')
         financialList && financialList.map((content, index) => {
@@ -81,6 +97,7 @@ const Dropdown = () => {
         setTotalSum(total.sum)
         console.log('total.income : ' + total.income + ', total.outcome : ' + total.outcome + ', total.sum : ' + total.sum)
     }
+    // 데이터 조회 값 변경때마다 헤더(금액부분) 새로 계산
     useEffect(() => {
         calcTotalIncome()
     }, [financialList])
@@ -104,7 +121,7 @@ const Dropdown = () => {
                                         {
                                             selectedPeriod === '주간' ? 
                                             (content.WEEK_START + ' ~ ' + content.WEEK_END) : 
-                                            (selectedPeriod === '월간' ? content.MONTH + '월' : content.YEAR + '년')
+                                            (selectedPeriod === '월간' ? content.YEAR + '년' + content.MONTH + '월' : content.YEAR + '년')
                                         }
                                     </p>
                                     <p className="income">+{addComma(content.TOTAL_INCOME.toString())}원</p>
