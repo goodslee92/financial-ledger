@@ -98,6 +98,12 @@ const Dropdown = () => {
                     </div>
                 </div>
                 <div className="statistics_content_container">
+                    <div className='statistics_item_name_container'>
+                        <p className='use_date'>사용일</p>
+                        <p className='use_income_amount'>수입 금액</p>
+                        <p className='use_outcome_amount'>지출 금액</p>
+                    </div>
+                    <hr className="statistics_devideLine"/>
                     {
                         financialList && financialList.map((content, index) => {
                             return (

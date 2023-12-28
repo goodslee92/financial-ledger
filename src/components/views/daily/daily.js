@@ -66,7 +66,6 @@ const Daily = () => {
                                     <p className="daily_item_title">{content.TITLE}</p>
                                     <p className="daily_item_income">+{content.IO_TYPE === 'I' ? addComma(content.AMOUNT) : 0}원</p>
                                     <p className="daily_item_outcome">-{content.IO_TYPE === 'O' ? addComma(content.AMOUNT) : 0}원</p>
-                                    <hr />
                                 </div>
                             )
                         })

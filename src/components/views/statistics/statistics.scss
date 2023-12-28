@@ -1,4 +1,5 @@
 @use '../../../styles/theme.scss';
+@use '../../../styles/common.scss' as common;
 
 .statistics_container {
   top: 0;
@@ -31,17 +32,14 @@
 }
 
 .statistics_content_container {
-  top: 30%;
+  top: 25%;
   width: 100%;
   position: absolute;
   text-align: center;
 }
 
 .row_statistics_item_container {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  border-bottom: 1px solid theme.$gray-color;
+  @include common.flex-row(space-between, center);
   p {
     margin-top: 15px;
   }
@@ -61,4 +59,16 @@
 .outcome {
   width: 45%;
   color: theme.$light-red;
+}
+
+.statistics_item_name_container {
+  margin: 10px 10% 0px 10%;
+  display: flex;
+  flex-flow: row;
+  color: black;
+  @include common.flex-row(space-between, center);
+}
+.statistics_devideLine {
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
