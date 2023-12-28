@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-native";
 import React, {useState} from 'react';
 import axios from "axios";
 import './index.scss';
+import { url } from '../../common/api'
 
 function Index() {
     const id_max_length = 12;
@@ -46,7 +47,7 @@ function Index() {
     const loginOnClickHandler = () => {
         console.log("data.id : " + data.id + ", data.password : " + data.password)
         const fetchData = async () => {
-            await axios.post('http://localhost:3001/api/loginMemberInfo', data)
+            await axios.post(url + '/api/loginMemberInfo', data)
             .then(res => {
                 console.log(res.data)
                 if (res.data[0].user_pw === enteredPw) {
