@@ -15,12 +15,16 @@ const HeaderTitle = () => {
             sessionStorage.setItem('prevPath', location.pathname)
             navigate('/');
         } else {
+            console.log('location.pathname : ' + location.pathname)
+            sessionStorage.setItem('prevPath', location.pathname)
+            console.log('clearStorage start')
             clearStorage();
+            console.log('clearStorage end')
         }
     }
     return (
         <div className="header_title_container">
-            <span className="loginUserName">
+            <span className="loginUserName">    
                 {
                     sessionStorage.getItem('loginUserName') === null ? 'Guest' : sessionStorage.getItem('loginUserName')
                 } 님
