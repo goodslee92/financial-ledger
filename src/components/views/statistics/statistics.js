@@ -99,7 +99,7 @@ const Dropdown = () => {
                     {
                         financialList && financialList.map((content, index) => {
                             return (
-                                <div className="row_container" key={index}>
+                                <div className="row_statistics_item_container" key={index}>
                                     <p className="date">
                                         {
                                             selectedPeriod === '주간' ? 

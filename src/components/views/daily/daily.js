@@ -44,6 +44,13 @@ const Daily = () => {
             <div className="daily">
                 <HeaderAmount income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()} />
                 <div className="daily_content_container">
+                    <div className='item_name_container'>
+                        <p className='use_date'>사용 날짜</p>
+                        <p className='use_item_title'>사용 내역</p>
+                        <p className='use_income_amount'>수입 금액</p>
+                        <p className='use_outcome_amount'>지출 금액</p>
+                    </div>
+                    <hr className='devideLine'/>
                     {
                         financialList && financialList.map((content, index) => {
                             if (content.IO_TYPE === 'I') {
@@ -54,10 +61,12 @@ const Daily = () => {
                                 total.outcome += +content.AMOUNT
                             }
                             return (
-                                <div className="row_container" key={index}>
+                                <div className="row_daily_item_container" key={index}>
                                     <p className="date">{content.USE_DATE}</p>
+                                    <p className="item_title">{content.TITLE}</p>
                                     <p className="income">+{content.IO_TYPE === 'I' ? addComma(content.AMOUNT) : 0}원</p>
                                     <p className="outcome">-{content.IO_TYPE === 'O' ? addComma(content.AMOUNT) : 0}원</p>
+                                    <hr/>
                                 </div>
                             )
                         })
