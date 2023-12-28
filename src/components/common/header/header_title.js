@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-native";
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
 const HeaderTitle = () => {
     const navigate = useNavigate();
-    const location = useLocation();
+    // const location = useLocation();
 
     const clearStorage = () => {
         sessionStorage.clear();
