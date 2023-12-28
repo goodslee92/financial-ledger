@@ -45,7 +45,7 @@ function Index() {
     const sessionStorage = window.sessionStorage;
     // 로그인 버튼 핸들러
     const loginOnClickHandler = () => {
-        console.log("data.id : " + data.id + ", data.password : " + data.password)
+        // console.log("data.id : " + data.id + ", data.password : " + data.password)
         const fetchData = async () => {
             await axios.post(url + '/api/loginMemberInfo', data)
             .then(res => {
