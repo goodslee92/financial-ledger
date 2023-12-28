@@ -27,6 +27,19 @@ const Dropdown = () => {
     const handleOnChange = (e) => {
         setSelectedPeriod(e.value);
     }
+    // 헤더 금액 부분 새로 계산
+    const calcTotalIncome = () => {
+        console.log('calcTotalIncome called..')
+        financialList && financialList.map((content, index) => {
+            total.income += content.TOTAL_INCOME 
+            total.outcome += content.TOTAL_OUTCOME
+        })
+        total.sum = total.income - total.outcome
+        setTotalIncome(total.income)
+        setTotalOutcome(total.outcome)
+        setTotalSum(total.sum)
+        console.log('total.income : ' + total.income + ', total.outcome : ' + total.outcome + ', total.sum : ' + total.sum)
+    }
     // 최초 1회 기본값인 '주간' 데이터 조회 및 화면 렌더링
     useEffect(() => {
         console.log('selectWeekendItem API called..')
@@ -84,23 +97,10 @@ const Dropdown = () => {
                 fetchData()
                 break
         }
-    }, selectedPeriod)
-    const calcTotalIncome = () => {
-        console.log('calcTotalIncome called..')
-        financialList && financialList.map((content, index) => {
-            total.income += content.TOTAL_INCOME 
-            total.outcome += content.TOTAL_OUTCOME
-        })
-        total.sum = total.income - total.outcome
-        setTotalIncome(total.income)
-        setTotalOutcome(total.outcome)
-        setTotalSum(total.sum)
-        console.log('total.income : ' + total.income + ', total.outcome : ' + total.outcome + ', total.sum : ' + total.sum)
-    }
-    // 데이터 조회 값 변경때마다 헤더(금액부분) 새로 계산
-    useEffect(() => {
+        // 헤더(금액부분) 새로 계산
         calcTotalIncome()
-    }, [financialList])
+    }, financialList)
+    
     return (
         <div className="statistics_root_container">
             <HeaderTitle />
