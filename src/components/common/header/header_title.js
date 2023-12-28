@@ -11,15 +11,11 @@ const HeaderTitle = () => {
     };
     const logInOutBtnOnclickHandler = () => {
         if (sessionStorage.getItem('loginUserName') === null) {
-            console.log('location.pathname : ' + location.pathname)
-            sessionStorage.setItem('prevPath', location.pathname)
+            // console.log('location.pathname : ' + location.pathname)
+            // sessionStorage.setItem('prevPath', location.pathname)
             navigate('/');
         } else {
-            console.log('location.pathname : ' + location.pathname)
-            sessionStorage.setItem('prevPath', location.pathname)
-            console.log('clearStorage start')
             clearStorage();
-            console.log('clearStorage end')
         }
     }
     return (

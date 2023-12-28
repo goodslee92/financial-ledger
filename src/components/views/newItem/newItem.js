@@ -49,14 +49,14 @@ const NewItem = () => {
         io_type: entredIoType,
     }
     const registerNewItemHandler = () => {
-        console.log(
-            "user_id: " + window.sessionStorage.getItem('loginUserId') + 
-            ", amount: " + enteredAmount + ", use_date: " + enteredDate
-            + ", title: " + enteredTitle + ", io_type: " + entredIoType)
+        // console.log(
+        //     "user_id: " + window.sessionStorage.getItem('loginUserId') + 
+        //     ", amount: " + enteredAmount + ", use_date: " + enteredDate
+        //     + ", title: " + enteredTitle + ", io_type: " + entredIoType)
         const fetchData = async () => {
             await axios.post(url + '/api/addNewItem', data)
                 .then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     if (res.status === 200) {
                         alert("내역이 추가 되었습니다.");
                         clearItem();

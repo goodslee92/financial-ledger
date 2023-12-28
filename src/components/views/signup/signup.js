@@ -33,7 +33,7 @@ const SignUp = () => {
             const fetchData = async () => {
                 await axios.post(url + '/api/registerAccount', data)
                     .then(res => {
-                        console.log(res.data)
+                        // console.log(res.data)
                     }).catch(err => {
                         console.log(err)
                     })
@@ -46,7 +46,7 @@ const SignUp = () => {
         const fetchData = async () => {
             await axios.post(url + '/api/checkId', data)
                 .then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     if (res.data[0] === undefined) {
                         alert('사용 가능한 ID입니다')
                     } else {

@@ -49,7 +49,7 @@ function Index() {
         const fetchData = async () => {
             await axios.post(url + '/api/loginMemberInfo', data)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 if (res.data[0].user_pw === enteredPw) {
                     alert(res.data[0].user_name + "님 반갑습니다.");
                     sessionStorage.setItem("loginUserId", res.data[0].user_id)

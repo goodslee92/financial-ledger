@@ -21,7 +21,7 @@ const Daily = () => {
         const fetchData = async () => {
             await axios.post(url + '/api/moneyTblInfo', data)
             .then(res => {
-                console.log(res.data)
+                console.log(res.data)/
                 setFinancialList(res.data)
             }).catch(err => {
                 console.log(err)

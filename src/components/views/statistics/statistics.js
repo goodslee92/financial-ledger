@@ -32,7 +32,7 @@ const Dropdown = () => {
                 const fetchMonthlyData = async () => {
                     await axios.post(url + '/api/selectMonthlyItem', data)
                     .then(res => {
-                        console.log(res.data)
+                        // console.log(res.data)
                         // setFinancialList(res.data)
                     }).catch(err => {
                         console.log(err)
@@ -44,7 +44,7 @@ const Dropdown = () => {
                 const fetchYearlyData = async () => {
                     await axios.post(url + '/api/selectYearlyItem', data)
                     .then(res => {
-                        console.log(res.data)
+                        // console.log(res.data)
                         // setFinancialList(res.data)
                     }).catch(err => {
                         console.log(err)
