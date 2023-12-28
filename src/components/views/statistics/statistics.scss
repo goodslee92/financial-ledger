@@ -44,25 +44,25 @@
     margin-top: 15px;
   }
 }
-.period {
-  margin-left: 10%;
-  width: 50vh;
+.statistics_item_date {
+  width: 30%;
   text-align: center;
   color: black;
   background-color: theme.$light-gray;
   border-radius: 10px;
 }
-.income {
-  width: 45%;
+
+.statistics_item_income {
+  width: 40%;
   color: theme.$light-green;
 }
-.outcome {
-  width: 45%;
+.statistics_item_outcome {
+  width: 30%;
   color: theme.$light-red;
 }
 
 .statistics_item_name_container {
-  margin: 10px 10% 0px 10%;
+  margin: 10px 13% 0px 14%;
   display: flex;
   flex-flow: row;
   color: black;

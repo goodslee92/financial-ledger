@@ -44,8 +44,6 @@
 
 .daily_item_name_container {
     margin: 10px 10% 0px 11%;
-    display: flex;
-    flex-flow: row;
     color: black;
     @include common.flex-row(space-between, center);
 }

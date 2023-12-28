@@ -99,24 +99,24 @@ const Dropdown = () => {
                 </div>
                 <div className="statistics_content_container">
                     <div className='statistics_item_name_container'>
-                        <p className='use_date'>사용일</p>
-                        <p className='use_income_amount'>수입 금액</p>
-                        <p className='use_outcome_amount'>지출 금액</p>
+                        <p className='statistics_use_date'>사용일</p>
+                        <p className='statistics_use_income_amount'>수입 금액</p>
+                        <p className='statistics_use_outcome_amount'>지출 금액</p>
                     </div>
                     <hr className="statistics_devideLine"/>
                     {
                         financialList && financialList.map((content, index) => {
                             return (
                                 <div className="row_statistics_item_container" key={index}>
-                                    <p className="date">
+                                    <p className="statistics_item_date">
                                         {
                                             selectedPeriod === '주간' ? 
                                             (content.WEEK_START + ' ~ ' + content.WEEK_END) : 
                                             (selectedPeriod === '월간' ? content.YEAR + '년 ' + content.MONTH + '월' : content.YEAR + '년')
                                         }
                                     </p>
-                                    <p className="income">+{addComma(content.TOTAL_INCOME.toString())}원</p>
-                                    <p className="outcome">-{addComma(content.TOTAL_OUTCOME.toString())}원</p>
+                                    <p className="statistics_item_income">+{addComma(content.TOTAL_INCOME.toString())}원</p>
+                                    <p className="statistics_item_outcome">-{addComma(content.TOTAL_OUTCOME.toString())}원</p>
                                 </div>
                             )
                         })
