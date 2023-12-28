@@ -5,6 +5,7 @@ import Nav from '../../common/nav/nav'
 import './daily.scss'
 import axios from 'axios'
 import HeaderTitle from '../../common/header/header_title'
+import { url } from '../../common/api'
 
 const Daily = () => {
     const [financialList, setFinancialList] = useState()
@@ -18,7 +19,7 @@ const Daily = () => {
     }
     useEffect(() => {
         const fetchData = async () => {
-            await axios.post('http://localhost:3001/api/moneyTblInfo', data)
+            await axios.post(url + '/api/moneyTblInfo', data)
             .then(res => {
                 console.log(res.data)
                 setFinancialList(res.data)

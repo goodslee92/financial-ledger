@@ -6,7 +6,7 @@ import { addComma } from '../../../utils/numberUtils';
 import Nav from '../../common/nav/nav'
 import HeaderTitle from "../../common/header/header_title";
 import axios from 'axios'
-
+import { url } from '../../common/api'
 
 const Dropdown = () => {
     const options = [
@@ -30,7 +30,7 @@ const Dropdown = () => {
             case '월간' :
                 const currentMonth = new Date().getMonth() + 1
                 const fetchMonthlyData = async () => {
-                    await axios.post('http://localhost:3001/api/selectMonthlyItem', data)
+                    await axios.post(url + '/api/selectMonthlyItem', data)
                     .then(res => {
                         console.log(res.data)
                         // setFinancialList(res.data)
@@ -42,7 +42,7 @@ const Dropdown = () => {
                 break
             case '연간' :
                 const fetchYearlyData = async () => {
-                    await axios.post('http://localhost:3001/api/selectYearlyItem', data)
+                    await axios.post(url + '/api/selectYearlyItem', data)
                     .then(res => {
                         console.log(res.data)
                         // setFinancialList(res.data)
@@ -59,7 +59,7 @@ const Dropdown = () => {
     useEffect(() => {
         console.log('selectWeekendItem API called..')
         const fetchData = async () => {
-            await axios.post('http://localhost:3001/api/selectWeekendItem', data)
+            await axios.post(url + '/api/selectWeekendItem', data)
             .then(res => {
                 console.log(res.data)
                 setFinancialList(res.data)

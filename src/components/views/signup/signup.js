@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './signup.scss';
 import axios from "axios";
 import { useNavigate } from "react-router-native";
+import { url } from '../../common/api'
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -30,7 +31,7 @@ const SignUp = () => {
     };
     const onClickHandler = () => {
             const fetchData = async () => {
-                await axios.post('http://localhost:3001/api/registerAccount', data)
+                await axios.post(url + '/api/registerAccount', data)
                     .then(res => {
                         console.log(res.data)
                     }).catch(err => {
@@ -43,7 +44,7 @@ const SignUp = () => {
     }
     const checkIdHandler = () => {
         const fetchData = async () => {
-            await axios.post('http://localhost:3001/api/checkId', data)
+            await axios.post(url + '/api/checkId', data)
                 .then(res => {
                     console.log(res.data)
                     if (res.data[0] === undefined) {

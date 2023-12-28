@@ -1,6 +1,7 @@
 import { enteredOnlyNumber, addComma, deleteComma } from '../../../utils/numberUtils';
 import React, { useCallback, useState } from "react";
 import axios from "axios";
+import { url } from '../../common/api'
 
 const NewItem = () => {
     // 날짜
@@ -53,7 +54,7 @@ const NewItem = () => {
             ", amount: " + enteredAmount + ", use_date: " + enteredDate
             + ", title: " + enteredTitle + ", io_type: " + entredIoType)
         const fetchData = async () => {
-            await axios.post('http://localhost:3001/api/addNewItem', data)
+            await axios.post(url + '/api/addNewItem', data)
                 .then(res => {
                     console.log(res.data)
                     if (res.status === 200) {
