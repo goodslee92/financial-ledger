@@ -12,38 +12,45 @@
     width: 100%;
 }
 .row_daily_item_container {
-    margin-left: 5%;
-    margin-right: 5%;
     @include common.flex-row(center, center);
+    border-bottom: 1px solid theme.$light-gray;
 }
-.date {
-    width: 50vh;
+.daily_item_date {
+    width: 25%;
     color: black;
     background-color: theme.$light-gray;
-    border-radius: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
-.item_title {
-    width: 30%;
+.daily_item_title {
+    width: 25%;
     color: black;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
-.income {
-    width: 30%;
+.daily_item_income {
+    width: 25%;
     color: theme.$light-green;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
-.outcome {
-    width: 30%;
+.daily_item_outcome {
+    width: 25%;
     color: theme.$light-red;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-.item_name_container {
-    margin: 10px 10% 0px 10%;
+.daily_item_name_container {
+    margin: 10px 10% 0px 11%;
     display: flex;
     flex-flow: row;
     color: black;
     @include common.flex-row(space-between, center);
 }
 
-.devideLine {
+.daily_devideLine {
     margin-top: 0px;
     margin-bottom: 10px;
 }
