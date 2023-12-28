@@ -29,7 +29,6 @@ const Dropdown = () => {
     }
     // 헤더 금액 부분 새로 계산
     const calcTotalIncome = () => {
-        console.log('calcTotalIncome called..')
         financialList && financialList.map((content, index) => {
             total.income += content.TOTAL_INCOME 
             total.outcome += content.TOTAL_OUTCOME
@@ -40,20 +39,6 @@ const Dropdown = () => {
         setTotalSum(total.sum)
         console.log('total.income : ' + total.income + ', total.outcome : ' + total.outcome + ', total.sum : ' + total.sum)
     }
-    // 최초 1회 기본값인 '주간' 데이터 조회 및 화면 렌더링
-    useEffect(() => {
-        console.log('selectWeekendItem API called..')
-        const fetchData = async () => {
-            await axios.post(url + '/api/selectWeekendItem', data)
-            .then(res => {
-                console.log(res.data)
-                setFinancialList(res.data)
-            }).catch(err => {
-                console.log(err)
-            })
-        }
-        fetchData()
-    }, [])
     // 주간/월간/연간 선택 값 변경때마다 데이터 조회 및 화면 렌더링 새로고침
     useEffect(() => {
         console.log('selectedPeriod is changed, selectedPeriod : ' + selectedPeriod)
@@ -99,7 +84,7 @@ const Dropdown = () => {
         }
         // 헤더(금액부분) 새로 계산
         calcTotalIncome()
-    }, [financialList])
+    }, [selectedPeriod])
     
     return (
         <div className="statistics_root_container">
