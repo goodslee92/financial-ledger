@@ -27,7 +27,7 @@ const Dropdown = () => {
     const handleOnChange = (e) => {
         setSelectedPeriod(e.value);
     }
-    // 헤더 금액 부분 새로 계산
+    // 헤더 금액 부분 계산
     const calcTotalIncome = () => {
         financialList && financialList.map((content, index) => {
             total.income += content.TOTAL_INCOME 
@@ -39,9 +39,8 @@ const Dropdown = () => {
         setTotalSum(total.sum)
         console.log('total.income : ' + total.income + ', total.outcome : ' + total.outcome + ', total.sum : ' + total.sum)
     }
-    // 주간/월간/연간 선택 값 변경때마다 데이터 조회 및 화면 렌더링 새로고침
-    useEffect(() => {
-        console.log('selectedPeriod is changed, selectedPeriod : ' + selectedPeriod)
+    // 선택값(주간/월간/연간)에 따라 조회 쿼리 분기처리
+    const switchPeriod = () => {
         switch (selectedPeriod) {
             case '월간' :
                 // const currentMonth = new Date().getMonth() + 1
@@ -82,10 +81,17 @@ const Dropdown = () => {
                 fetchData()
                 break
         }
-        // 헤더(금액부분) 새로 계산
-        calcTotalIncome()
+    }
+    useEffect(() => {
+        console.log('selectedPeriod is changed, selectedPeriod : ' + selectedPeriod)
+        // 선택값(주간/월간/연간) 변동시 해당 기간의 조회 쿼리 분기처리
+        switchPeriod()
     }, [selectedPeriod])
-    
+
+    useEffect(() => {
+        // 기간(주간/월간/연간)에 따른 데이터 변경시 헤더(금액부분) 새로 계산
+        calcTotalIncome()
+    }, [financialList])
     return (
         <div className="statistics_root_container">
             <HeaderTitle />
