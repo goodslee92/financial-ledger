@@ -6,6 +6,8 @@ import './daily.scss'
 import axios from 'axios'
 import HeaderTitle from '../../common/header/header_title'
 import { url } from '../../common/api'
+import { subMonths, addMonths } from 'date-fns';
+import CalendarHeader from '../calendar/calendarHeader';
 
 const Daily = () => {
     const [financialList, setFinancialList] = useState()
@@ -14,6 +16,15 @@ const Daily = () => {
     const [totalOutcome, setTotalOutcome] = useState(0)
     const total = { sum: 0, income: 0, outcome: 0 }
     
+    const [currentMonth, setCurrentMonth] = useState(new Date());
+
+    const prevMonth = () => {
+        setCurrentMonth(subMonths(currentMonth, 1));
+    };
+    const nextMonth = () => {
+        setCurrentMonth(addMonths(currentMonth, 1));
+    };
+
     const data = {
         id: window.sessionStorage.getItem('loginUserId')
     }
@@ -40,6 +51,7 @@ const Daily = () => {
     return (
         <div className='daily_root_container'>
             <HeaderTitle />
+            <CalendarHeader currentMonth={currentMonth} prevMonth={() => prevMonth()} nextMonth={() => nextMonth()} />
             <Nav />
             <div className="daily">
                 <HeaderAmount income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()} />

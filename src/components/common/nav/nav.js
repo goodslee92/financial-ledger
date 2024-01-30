@@ -54,7 +54,7 @@ const useStyles = makeStyles({
         textDecoration: "underline",
         textDecorationColor: "#ff5b5b",
         textDecorationThickness: "5px",
-        fontWeight: "bold",
+        fontWeight: "bold"
     },
 });
 

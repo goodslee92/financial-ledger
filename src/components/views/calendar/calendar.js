@@ -6,6 +6,7 @@ import CalendarCells from './calendarCells';
 import HeaderAmount from '../../common/header/header_amount';
 import Nav from '../../common/nav/nav'
 import HeaderTitle from '../../common/header/header_title';
+import './calendar.scss';
 
 export const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date());
