@@ -1,6 +1,9 @@
 @use '../../../styles/theme.scss';
 @use '../../../styles/common.scss' as common;
 
+.daily_root_container {
+    padding-bottom: 1%;
+}
 .daily {
     top: 0;
     font-family: sans-serif;
