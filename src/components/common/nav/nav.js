@@ -4,7 +4,6 @@ import { makeStyles } from '@mui/styles';
 
 function Nav() {
     const buttonList = [
-        { text: "내역 추가", path: "/Home" },
         { text: "달력", path: "/Calendar" },
         { text: "일일", path: "/Daily" },
         { text: "통계", path: "/Statistics" }
