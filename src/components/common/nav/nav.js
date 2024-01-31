@@ -7,11 +7,19 @@ function Nav() {
         { text: "내역 추가", path: "/Home" },
         { text: "달력", path: "/Calendar" },
         { text: "일일", path: "/Daily" },
-        { text: "통계", path: "/Statistics" },
+        { text: "통계", path: "/Statistics" }
       ];
     const [selected, setSelected] = useState();
     const buttonHandler = (text) => {
-        setSelected(text);
+        console.log("buttonHandler called...");
+        const asyncSelected = async () => {
+            console.log("asyncSelected called... item text : " + text);
+            await setSelected(text);
+        }
+        console.log("asyncSelected before...");
+        asyncSelected();
+        console.log("asyncSelected end...");
+        console.log("selected changed : " + selected);
     };
     const classes = useStyles();
     return (
@@ -32,10 +40,6 @@ function Nav() {
                         )
                     })
                 }
-                {/* <Link className="navbarMenu" to={'/Home'}>내역 추가</Link>
-                <Link className="navbarMenu" to={'/Calendar'}>달력</Link>
-                <Link className="navbarMenu" to={'/Daily'}>일일</Link>
-                <Link className="navbarMenu" to={'/Statistics'}>통계</Link> */}
             </div>
         </div>
     );
@@ -49,11 +53,11 @@ const useStyles = makeStyles({
       },
     // 버튼 선택시 빨간 밑줄 표시
     underLine: {
-        color: "black",
+        color: "red",
         width: "20%",
         textDecoration: "underline",
         textDecorationColor: "#ff5b5b",
-        textDecorationThickness: "5px",
+        textDecorationThickness: "3px",
         fontWeight: "bold"
     },
 });
