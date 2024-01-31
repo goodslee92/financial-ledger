@@ -51,10 +51,10 @@ const Daily = () => {
     return (
         <div className='daily_root_container'>
             <HeaderTitle />
+            <HeaderAmount income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()} />
             <CalendarHeader currentMonth={currentMonth} prevMonth={() => prevMonth()} nextMonth={() => nextMonth()} />
             <Nav />
             <div className="daily">
-                <HeaderAmount income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()} />
                 <div className="daily_content_container">
                     <div className='daily_item_name_container'>
                         <p className='daily_item_use_date'>사용일</p>
