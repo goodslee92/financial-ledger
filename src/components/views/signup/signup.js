@@ -30,17 +30,17 @@ const SignUp = () => {
         name : name,
     };
     const onClickHandler = () => {
-            const fetchData = async () => {
-                await axios.post(url + '/api/registerAccount', data)
-                    .then(res => {
-                        // console.log(res.data)
-                    }).catch(err => {
-                        console.log(err)
-                    })
-            }
-            fetchData();
-            alert(data.name + "님의 가입을 환영합니다.");
-            navigate('/');
+        const fetchData = async () => {
+            await axios.post(url + '/api/registerAccount', data)
+                .then(res => {
+                    // console.log(res.data)
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+        fetchData();
+        alert(data.name + "님의 가입을 환영합니다.");
+        navigate('/');
     }
     const checkIdHandler = () => {
         const fetchData = async () => {
