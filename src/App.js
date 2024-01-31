@@ -7,7 +7,6 @@ import Calendar from './components/views/calendar/calendar';
 import SignUp from './components/views/signup/signup';
 import Index from './components/views/index'
 import "./styles/button.scss";
-import './components/views/home/home.scss'
 import './components/views/newItem/newItem.scss';
 import './components/common/nav/nav.scss'
 import './components/common/header/header.scss';

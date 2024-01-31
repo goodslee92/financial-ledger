@@ -23,8 +23,6 @@ function Index() {
         const path = sessionStorage.getItem('prevPath');
         console.log('prevPath : ' + path);
         switch (path) {
-            case '/Home' :
-                return navigate('/Home')
             case '/Calendar' :
                 return navigate('/Calendar')
             case '/Daily' :
@@ -34,7 +32,7 @@ function Index() {
             case '/SignUp' :
                 return navigate('/SignUp')
             default :
-                return navigate('/Home')
+                return navigate('/Calendar')
         }
     }
     const data = {
