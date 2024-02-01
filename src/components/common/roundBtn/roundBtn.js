@@ -20,7 +20,7 @@ const RoundBtn = () => {
     return (
         <div className='roundBtn_container'>
             <button className="plus_button" onClick={()=> setModalIsOpen(true)}>+</button>
-            <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            <Modal className='newItemModal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                 <NewItem isOpen={modalIsOpen} onCancel={onCancelHandler} onSubmit={onSubmitHandler} />
             </Modal>
         </div>
