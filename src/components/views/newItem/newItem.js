@@ -3,7 +3,7 @@ import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { url } from '../../common/api'
 
-const NewItem = () => {
+const NewItem = ({isOpen, onCancel, onSubmit}) => {
     // 날짜
     const [enteredDate, setEnteredDate] = useState("");
     const dateChangeHandler = (event) => {
@@ -69,6 +69,7 @@ const NewItem = () => {
                 })
         }
         fetchData();
+        onSubmit();
     }
     const clearItem = () => {
         // 입력창 초기화
@@ -79,6 +80,7 @@ const NewItem = () => {
     }
     const cancleHandler = () => {
         clearItem()
+        onCancel();
     }
     return (
         <div className="new-item">
