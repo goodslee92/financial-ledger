@@ -11,7 +11,6 @@ import './components/views/newItem/newItem.scss';
 import './components/common/nav/nav.scss'
 import './components/common/header/header.scss';
 import './components/common/footer/footer.scss';
-import RoundBtn from './components/common/roundBtn/roundBtn';
 
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
           <Route path="/Statistics" element={<Statistics />}/>
           <Route path="/SignUp" element={<SignUp />} />
         </Routes>
-        <RoundBtn />
         <Footer />
       </div>
     </BrowserRouter>

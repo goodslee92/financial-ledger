@@ -7,6 +7,7 @@ import HeaderAmount from '../../common/header/header_amount';
 import Nav from '../../common/nav/nav'
 import HeaderTitle from '../../common/header/header_title';
 import './calendar.scss';
+import RoundBtn from '../../common/roundBtn/roundBtn';
 
 export const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -29,6 +30,7 @@ export const Calendar = () => {
             <CalendarHeader currentMonth={currentMonth} prevMonth={() => prevMonth()} nextMonth={() => nextMonth()} />
             <CalendarDays />
             <CalendarCells currentMonth={currentMonth} selectedDate={selectedDate} onDateClick={() => onDateClick()} />
+            <RoundBtn />
         </div>
     );
 }

@@ -8,6 +8,7 @@ import HeaderTitle from '../../common/header/header_title'
 import { url } from '../../common/api'
 import { subMonths, addMonths } from 'date-fns';
 import CalendarHeader from '../calendar/calendarHeader';
+import RoundBtn from '../../common/roundBtn/roundBtn'
 
 const Daily = () => {
     const [financialList, setFinancialList] = useState()
@@ -84,6 +85,7 @@ const Daily = () => {
                     }
                 </div>
             </div>
+            <RoundBtn />
         </div>
     )
 }
