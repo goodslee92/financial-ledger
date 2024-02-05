@@ -6,7 +6,7 @@
     height: 50px;
     width: 100%;
     border-bottom: 1px solid theme.$light-gray;
-    background-color: #FBFFB9;
+    background-color: #FDD692;
     color: black;
     text-align: center;
 }
@@ -30,7 +30,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    background-color: #FBFFB9;
+    background-color: #FDD692;
     // border-bottom: 1px solid black;
     width: 100%;
     @include common.flex-row(space-between, baseline);
