@@ -64,7 +64,7 @@
         @include common.size(20%, 100%);
         @include common.flex-row(flex-end, center);
         svg {
-            @include common.size(40%, 40%);
+            @include common.size(20%, 40%);
             color: transparentize(gray, 0.2);
             &:hover {
                 @include common.hover-event();
@@ -88,7 +88,7 @@
         @include common.size(20%, 100%);
         @include common.flex-row(flex-start, center);
         svg {
-            @include common.size(5%, 40%);
+            @include common.size(20%, 40%);
             color: transparentize(gray, 0.2);
             &:hover {
                 @include common.hover-event();
