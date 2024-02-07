@@ -22,7 +22,7 @@
             }
         }
         .col.col-center {
-            @include common.size(60%, 100%);
+            @include common.size(80%, 100%);
             @include common.flex-column(center, center);
             margin-left: 1%;
             .text.month {
@@ -31,9 +31,6 @@
                 color: #575757;
                 font-weight: 500;
                 white-space: nowrap;
-            }
-            .text.year {
-                font-size: 1.5em; // 연도 텍스트의 크기를 조정합니다.
             }
         }
         .col.col-right {
