@@ -69,23 +69,31 @@ const Daily = () => {
                     </div>
                     <hr className='daily_devideLine'/>
                     {
-                        financialList && financialList.map((content, index) => {
-                            if (content.IO_TYPE === 'I') {
-                                total.sum += +content.AMOUNT
-                                total.income += +content.AMOUNT
-                            } else {
-                                total.sum -= +content.AMOUNT
-                                total.outcome += +content.AMOUNT
-                            }
-                            return (
-                                <div className="row_daily_item_container" key={index}>
-                                    <p className="daily_item_date">{content.USE_DATE}</p>
-                                    <p className="daily_item_title">{content.TITLE}</p>
-                                    <p className="daily_item_income">+{content.IO_TYPE === 'I' ? addComma(content.AMOUNT) : 0}원</p>
-                                    <p className="daily_item_outcome">-{content.IO_TYPE === 'O' ? addComma(content.AMOUNT) : 0}원</p>
-                                </div>
+                        financialList ? (
+                            financialList.length > 0 ? (
+                                financialList.map((content, index) => {
+                                    if (content.IO_TYPE === 'I') {
+                                        total.sum += +content.AMOUNT
+                                        total.income += +content.AMOUNT
+                                    } else {
+                                        total.sum -= +content.AMOUNT
+                                        total.outcome += +content.AMOUNT
+                                    }
+                                    return (
+                                        <div className="row_daily_item_container" key={index}>
+                                            <p className="daily_item_date">{content.USE_DATE}</p>
+                                            <p className="daily_item_title">{content.TITLE}</p>
+                                            <p className="daily_item_income">+{content.IO_TYPE === 'I' ? addComma(content.AMOUNT) : 0}원</p>
+                                            <p className="daily_item_outcome">-{content.IO_TYPE === 'O' ? addComma(content.AMOUNT) : 0}원</p>
+                                        </div>
+                                    )
+                                })
+                            ) : (
+                                <p>표시할 내역이 없습니다.</p>
                             )
-                        })
+                        ) : (
+                            <p>데이터를 불러오는 중입니다...</p>
+                        )
                     }
                 </div>
             </div>
