@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 
 const CalendarHeader = ({ currentMonth, prevMonth, nextMonth }) => {
     return (
-        <div className="calendarHeader row">
+        <div className="calendarHeader">
             <div className='col col-left'>
                 <Icon icon="bi:arrow-left-circle-fill" onClick={prevMonth} />
             </div>
