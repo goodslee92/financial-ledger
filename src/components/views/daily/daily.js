@@ -6,7 +6,7 @@ import './daily.scss'
 import axios from 'axios'
 import HeaderTitle from '../../common/header/header_title'
 import { url } from '../../common/api'
-import { subMonths, addMonths } from 'date-fns';
+import { subMonths, addMonths, format } from 'date-fns';
 import CalendarHeader from '../calendar/calendarHeader';
 import RoundBtn from '../../common/roundBtn/roundBtn'
 
@@ -21,13 +21,17 @@ const Daily = () => {
 
     const prevMonth = () => {
         setCurrentMonth(subMonths(currentMonth, 1));
+        console.log("prevMonth called.. currentMonth : " + format(currentMonth, 'MM'));
     };
     const nextMonth = () => {
         setCurrentMonth(addMonths(currentMonth, 1));
+        console.log("nextMonth called.. currentMonth : " + format(currentMonth, 'MM'));
     };
 
     const data = {
-        id: window.sessionStorage.getItem('loginUserId')
+        id: window.sessionStorage.getItem('loginUserId'),
+        currentMonth: format(currentMonth, 'MM'),
+        currentYear: format(currentMonth, 'yyyy')
     }
     useEffect(() => {
         const fetchData = async () => {
@@ -41,7 +45,7 @@ const Daily = () => {
         }
         fetchData()
         
-    }, [])
+    }, [currentMonth])
 
     useEffect(() => {
         setTotalIncome(total.income)
