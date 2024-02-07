@@ -67,7 +67,7 @@ function Index() {
     
     return (
         <div className="root_container">
-            <h1 className="title">가계부</h1>
+            <h1 className="title">지갑관리자</h1>
             <div className="input_container">
                 <input className="id" type="id" placeholder="ID" maxLength={id_max_length} onChange={idChangeHandler} required /><br />
                 <input className="password" type="password" placeholder="Password" maxLength={pw_max_length} onChange={passwordChangeHandler}/><br />
