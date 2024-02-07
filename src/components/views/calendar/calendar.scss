@@ -9,10 +9,10 @@
         @include common.size(100%, 10%);
         @include common.flex-row(space-between, baseline);
         .col.col-left {
-            @include common.size(20%, 100%);
+            @include common.size(10%, 100%);
             @include common.flex-row(flex-end, center);
             svg {
-                @include common.size(20%, 40%);
+                @include common.size(10%, 50%);
                 color: transparentize(gray, 0.2);
                 &:hover {
                     @include common.hover-event();
@@ -22,7 +22,7 @@
             }
         }
         .col.col-center {
-            @include common.size(80%, 100%);
+            @include common.size(90%, 100%);
             @include common.flex-column(center, center);
             margin-left: 1%;
             .text.month {
@@ -34,10 +34,10 @@
             }
         }
         .col.col-right {
-            @include common.size(20%, 100%);
+            @include common.size(10%, 100%);
             @include common.flex-row(flex-start, center);
             svg {
-                @include common.size(20%, 40%);
+                @include common.size(10%, 50%);
                 color: transparentize(gray, 0.2);
                 &:hover {
                     @include common.hover-event();
