@@ -25,7 +25,7 @@ const HeaderTitle = () => {
                     sessionStorage.getItem('loginUserName') === null ? 'Guest' : sessionStorage.getItem('loginUserName')
                 } 님
             </span>
-            <h3 className="headerTitleH3">지갑관리자</h3>
+            <h3 className="headerTitleH3">마이머니북</h3>
             <button className="logInOutBtn btn-gray" onClick={logInOutBtnOnclickHandler}>
                 {
                     sessionStorage.getItem('loginUserName') === null ? 'Login' : 'Logout'
