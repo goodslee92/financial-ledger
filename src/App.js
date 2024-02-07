@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Footer from './components/common/footer/footer';
 import Daily from './components/views/daily/daily';
 import Statistics from './components/views/statistics/statistics';
 import Calendar from './components/views/calendar/calendar';
@@ -10,7 +9,6 @@ import "./styles/button.scss";
 import './components/views/newItem/newItem.scss';
 import './components/common/nav/nav.scss'
 import './components/common/header/header.scss';
-import './components/common/footer/footer.scss';
 
 
 function App() {
@@ -24,7 +22,6 @@ function App() {
           <Route path="/Statistics" element={<Statistics />}/>
           <Route path="/SignUp" element={<SignUp />} />
         </Routes>
-        <Footer />
       </div>
     </BrowserRouter>
   );

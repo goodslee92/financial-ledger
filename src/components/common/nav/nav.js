@@ -22,24 +22,22 @@ function Nav() {
     };
     const classes = useStyles();
     return (
-        <div>
-            <div className="navbar">
-                {
-                    buttonList.map((item, index) => {
-                        return (
-                            <Link className={item.text === selected ? classes.underLine : classes.underLine_none}
-                                to={item.path}
-                                key={index}
-                                onClick={() => {
-                                    buttonHandler(item.text);
-                                }}
-                            >
-                                { item.text }
-                            </Link>
-                        )
-                    })
-                }
-            </div>
+        <div className="navbar">
+            {
+                buttonList.map((item, index) => {
+                    return (
+                        <Link className={`${item.text === selected ? classes.underLine : classes.underLine_none} navbarMenu`}
+                            to={item.path}
+                            key={index}
+                            onClick={() => {
+                                buttonHandler(item.text);
+                            }}
+                        >
+                            { item.text }
+                        </Link>
+                    )
+                })
+            }
         </div>
     );
 }
