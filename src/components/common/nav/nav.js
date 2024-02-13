@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { makeStyles } from '@mui/styles';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import BarChartIcon from '@mui/icons-material/BarChart';
 
 function Nav() {
     const buttonList = [
-        { text: "달력", path: "/Calendar" },
-        { text: "일일", path: "/Daily" },
-        { text: "통계", path: "/Statistics" }
+        { text: "달력", path: "/Calendar", icon: <CalendarTodayIcon /> },
+        { text: "일일", path: "/Daily", icon: <DateRangeIcon /> },
+        { text: "통계", path: "/Statistics", icon: <BarChartIcon /> }
       ];
     const [selected, setSelected] = useState();
     const buttonHandler = (text) => {
@@ -33,6 +36,8 @@ function Nav() {
                                 buttonHandler(item.text);
                             }}
                         >
+                            { item.icon }
+                            <br />
                             { item.text }
                         </Link>
                     )
