@@ -16,6 +16,7 @@ const Dropdown = () => {
         { value: "연간", label: "연간" }
     ];
     const secondOptions = [
+        { value: "전체", label: "전체" },
         { value: "저축", label: "저축" },
         { value: "의료비", label: "의료비" },
         { value: "교통비", label: "교통비" },
@@ -35,7 +36,7 @@ const Dropdown = () => {
     };
     const [financialList, setFinancialList] = useState();
     const [selectedPeriod, setSelectedPeriod] = useState('주간');
-    const [selectedExpense, setSelectedExpense] = useState('');
+    const [selectedExpense, setSelectedExpense] = useState('전체');
     const handlePeriodOnChange = (e) => {
         setSelectedPeriod(e.value);
     };
@@ -121,7 +122,7 @@ const Dropdown = () => {
                     </div>
                     <div className="second_option_container">
                         <p>분류</p>
-                        <Select options={secondOptions} className="select" onChange={handleExpenseOnChange} />
+                        <Select defaultValue={secondOptions[0]} options={secondOptions} className="select" onChange={handleExpenseOnChange} />
                     </div>
                 </div>
                 <div className="statistics_content_container">
