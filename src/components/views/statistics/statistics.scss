@@ -10,12 +10,12 @@
   align-items: center;
 }
 .dropDown_container {
-  top: 15%;
+  top: 12%;
   min-width: 300px;
-  box-shadow: 1px 4px 5px 1px #00000026;
-  display: flex;
   position: absolute;
   z-index: 10;
+  display: flex;
+  justify-content: space-between; // 항목들을 가로로 분배
 }
 
 .select {
@@ -24,17 +24,22 @@
   inline-size: 100%;
   font-size: 11px;
 }
-.select_div {
+.first_option_container, .second_option_container {
+  color: black;
   display: flex;
-  align-items: flex-end;
-  width: 100%;
+  width: 40%;
+  flex-direction: column; // 레이블과 선택 상자를 수직으로 배치
+  align-items: center; // 수직으로 중앙 정렬
   text-align: center;
+  p {
+    margin-bottom: 5px;
+  }
 }
 .statistics_root_container {
   padding-bottom: 1%;
 }
 .statistics_content_container {
-  top: 25%;
+  top: 21%;
   width: 100%;
   position: absolute;
   text-align: center;
@@ -43,7 +48,7 @@
 .row_statistics_item_container {
   @include common.flex-row(space-between, center);
   p {
-    margin-top: 15px;
+    margin-top: 5px;
   }
 }
 .statistics_item_date {
