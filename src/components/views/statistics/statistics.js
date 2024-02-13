@@ -10,10 +10,19 @@ import { url } from '../../common/api'
 import RoundBtn from "../../common/roundBtn/roundBtn";
 
 const Dropdown = () => {
-    const options = [
+    const firstOptions = [
         { value: "주간", label: "주간" },
         { value: "월간", label: "월간" },
         { value: "연간", label: "연간" }
+    ]
+    const secondOptions = [
+        { value: "의료비", label: "의료비" },
+        { value: "교통비", label: "교통비" },
+        { value: "외식비", label: "외식비" },
+        { value: "문화비", label: "문화비" },
+        { value: "보험료", label: "보험료" },
+        { value: "공과금", label: "공과금" },
+        { value: "통신비", label: "통신비" },
     ]
     const [totalSum, setTotalSum ] = useState(0)
     const [totalIncome, setTotalIncome] = useState(0)
@@ -101,7 +110,7 @@ const Dropdown = () => {
                 <HeaderAmount income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()}/>
                 <div className="dropDown_container">
                     <div className="select_div">
-                        <Select defaultValue={options[0]} options={options} className="select" onChange={handleOnChange} />
+                        <Select defaultValue={firstOptions[0]} options={firstOptions} className="select" onChange={handleOnChange} />
                     </div>
                 </div>
                 <div className="statistics_content_container">

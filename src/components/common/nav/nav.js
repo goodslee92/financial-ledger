@@ -8,7 +8,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 function Nav() {
     const buttonList = [
         { text: "달력", path: "/Calendar", icon: <CalendarTodayIcon /> },
-        { text: "일일", path: "/Daily", icon: <DateRangeIcon /> },
+        { text: "월별", path: "/Monthly", icon: <DateRangeIcon /> },
         { text: "통계", path: "/Statistics", icon: <BarChartIcon /> }
       ];
     const [selected, setSelected] = useState();

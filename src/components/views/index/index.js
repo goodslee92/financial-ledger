@@ -25,8 +25,8 @@ function Index() {
         switch (path) {
             case '/Calendar' :
                 return navigate('/Calendar')
-            case '/Daily' :
-                return navigate('/Daily')
+            case '/Monthly' :
+                return navigate('/Monthly')
             case '/Statistics' :
                 return navigate('/Statistics')
             case '/SignUp' :

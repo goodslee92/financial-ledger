@@ -2,7 +2,7 @@ import HeaderAmount from '../../common/header/header_amount'
 import { useState, useEffect } from "react"
 import { addComma } from '../../../utils/numberUtils'
 import Nav from '../../common/nav/nav'
-import './daily.scss'
+import './monthly.scss'
 import axios from 'axios'
 import HeaderTitle from '../../common/header/header_title'
 import { url } from '../../common/api'
@@ -10,7 +10,7 @@ import { subMonths, addMonths, format } from 'date-fns';
 import CalendarHeader from '../calendar/calendarHeader';
 import RoundBtn from '../../common/roundBtn/roundBtn'
 
-const Daily = () => {
+const Monthly = () => {
     const [financialList, setFinancialList] = useState()
     const [totalSum, setTotalSum ] = useState(0)
     const [totalIncome, setTotalIncome] = useState(0)
@@ -54,20 +54,20 @@ const Daily = () => {
     }, [financialList])
 
     return (
-        <div className='daily_root_container'>
+        <div className='monthly_root_container'>
             <HeaderTitle />
             <HeaderAmount income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()} />
             <CalendarHeader currentMonth={currentMonth} prevMonth={() => prevMonth()} nextMonth={() => nextMonth()} />
             <Nav />
-            <div className="daily">
-                <div className="daily_content_container">
-                    <div className='daily_item_name_container'>
-                        <p className='daily_item_use_date'>사용일</p>
-                        <p className='daily_item_use_item_title'>사용 내역</p>
-                        <p className='daily_item_use_income_amount'>수입 금액</p>
-                        <p className='daily_item_use_outcome_amount'>지출 금액</p>
+            <div className="monthly">
+                <div className="monthly_content_container">
+                    <div className='monthly_item_name_container'>
+                        <p className='monthly_item_use_date'>사용일</p>
+                        <p className='monthly_item_use_item_title'>사용 내역</p>
+                        <p className='monthly_item_use_income_amount'>수입 금액</p>
+                        <p className='monthly_item_use_outcome_amount'>지출 금액</p>
                     </div>
-                    <hr className='daily_devideLine'/>
+                    <hr className='monthly_devideLine'/>
                     {
                         financialList ? (
                             financialList.length > 0 ? (
@@ -80,11 +80,11 @@ const Daily = () => {
                                         total.outcome += +content.AMOUNT
                                     }
                                     return (
-                                        <div className="row_daily_item_container" key={index}>
-                                            <p className="daily_item_date">{content.USE_DATE}</p>
-                                            <p className="daily_item_title">{content.TITLE}</p>
-                                            <p className="daily_item_income">+{content.IO_TYPE === 'I' ? addComma(content.AMOUNT) : 0}원</p>
-                                            <p className="daily_item_outcome">-{content.IO_TYPE === 'O' ? addComma(content.AMOUNT) : 0}원</p>
+                                        <div className="row_monthly_item_container" key={index}>
+                                            <p className="monthly_item_date">{content.USE_DATE}</p>
+                                            <p className="monthly_item_title">{content.TITLE}</p>
+                                            <p className="monthly_item_income">+{content.IO_TYPE === 'I' ? addComma(content.AMOUNT) : 0}원</p>
+                                            <p className="monthly_item_outcome">-{content.IO_TYPE === 'O' ? addComma(content.AMOUNT) : 0}원</p>
                                         </div>
                                     )
                                 })
@@ -102,4 +102,4 @@ const Daily = () => {
     )
 }
 
-export default Daily
+export default Monthly

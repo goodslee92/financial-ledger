@@ -1,24 +1,24 @@
 @use '../../../styles/theme.scss';
 @use '../../../styles/common.scss' as common;
 
-.daily_root_container {
+.monthly_root_container {
     padding-bottom: 1%;
 }
-.daily {
+.monthly {
     top: 0;
     font-family: sans-serif;
     text-align: center;
 }
 
-.daily_content_container {
+.monthly_content_container {
     top: 25%;
     width: 100%;
 }
-.row_daily_item_container {
+.row_monthly_item_container {
     @include common.flex-row(center, center);
     border-bottom: 1px solid theme.$light-gray;
 }
-.daily_item_date {
+.monthly_item_date {
     width: 25%;
     color: black;
     background-color: theme.$light-gray;
@@ -26,32 +26,32 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.daily_item_title {
+.monthly_item_title {
     width: 25%;
     color: black;
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.daily_item_income {
+.monthly_item_income {
     width: 25%;
     color: theme.$light-green;
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.daily_item_outcome {
+.monthly_item_outcome {
     width: 25%;
     color: theme.$light-red;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-.daily_item_name_container {
+.monthly_item_name_container {
     margin: 10px 10% 0px 11%;
     color: black;
     @include common.flex-row(space-between, center);
 }
 
-.daily_devideLine {
+.monthly_devideLine {
     margin-top: 0px;
     margin-bottom: 10px;
 }
