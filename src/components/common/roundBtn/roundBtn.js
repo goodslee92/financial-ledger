@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import Modal from 'react-modal';
 import NewItem from "../../views/newItem/newItem";
 import './roundBtn.scss';

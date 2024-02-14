@@ -92,11 +92,11 @@ const NewItem = ({isOpen, onCancel, onSubmit}) => {
                     alert("내역 추가를 실패했습니다.");
                 })
         }
-        if (enteredDate == "") {
+        if (enteredDate === "") {
             alert("날짜를 선택해주세요.");
-        } else if(enteredTitle == "") {
+        } else if(enteredTitle === "") {
             alert("내역을 입력해주세요.");
-        } else if(enteredAmount == "") {
+        } else if(enteredAmount === "") {
             alert("금액을 입력해주세요.");
         } else {
             fetchData();
