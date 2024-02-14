@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { makeStyles } from '@mui/styles';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import DateRangeIcon from '@mui/icons-material/DateRange';
-import BarChartIcon from '@mui/icons-material/BarChart';
+import { IoCalendarNumberOutline } from "react-icons/io5";
+import { BsCalendarMonth } from "react-icons/bs";
+import { RiBarChartFill } from "react-icons/ri";
 
 function Nav() {
     const buttonList = [
-        { text: "달력", path: "/Calendar", icon: <CalendarTodayIcon /> },
-        { text: "월별", path: "/Monthly", icon: <DateRangeIcon /> },
-        { text: "통계", path: "/Statistics", icon: <BarChartIcon /> }
+        { text: "달력", path: "/Calendar", icon: <IoCalendarNumberOutline /> },
+        { text: "월별", path: "/Monthly", icon: <BsCalendarMonth /> },
+        { text: "통계", path: "/Statistics", icon: <RiBarChartFill /> }
       ];
     const [selected, setSelected] = useState();
     const buttonHandler = (text) => {
