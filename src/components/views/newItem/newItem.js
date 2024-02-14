@@ -132,7 +132,7 @@ const NewItem = ({isOpen, onCancel, onSubmit}) => {
 
             <div className="category_container">
                 <h2 className='fs-normal fw-regular'>분류</h2>
-                <Select options={categoryOptions} className="categoryOptions" onChange={handleCategoryOnChange} />
+                <Select options={categoryOptions} className="categoryOptions" onChange={handleCategoryOnChange} isSearchable={false}/>
             </div>
             <div className="amount_type">
                 <div className="amount_income">

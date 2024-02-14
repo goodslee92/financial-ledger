@@ -10,12 +10,12 @@ import { url } from '../../common/api';
 import RoundBtn from "../../common/roundBtn/roundBtn";
 
 const Dropdown = () => {
-    const firstOptions = [
+    const periodOptions = [
         { value: "주간", label: "주간" },
         { value: "월간", label: "월간" },
         { value: "연간", label: "연간" }
     ];
-    const secondOptions = [
+    const categoryOptions = [
         { value: "전체", label: "전체"},
         { value: "월급", label: "월급"},
         { value: "상여금", label: "상여금"},
@@ -42,12 +42,12 @@ const Dropdown = () => {
     };
     const [financialList, setFinancialList] = useState();
     const [selectedPeriod, setSelectedPeriod] = useState('주간');
-    const [selectedExpense, setSelectedExpense] = useState('전체');
+    const [selectedCategory, setSelectedCategory] = useState('전체');
     const handlePeriodOnChange = (e) => {
         setSelectedPeriod(e.value);
     };
-    const handleExpenseOnChange = (e) => {
-        setSelectedExpense(e.value);
+    const handleCategoryOnChange = (e) => {
+        setSelectedCategory(e.value);
     };
     // 헤더 금액 부분 계산
     const calcTotalIncome = () => {
@@ -61,8 +61,8 @@ const Dropdown = () => {
         setTotalSum(total.sum);
         console.log('total.income : ' + total.income + ', total.outcome : ' + total.outcome + ', total.sum : ' + total.sum);
     };
-    // 선택값(주간/월간/연간)에 따라 조회 쿼리 분기처리
-    const switchPeriod = () => {
+    // 선택값(기간/분류)에 따라 조회 쿼리 분기처리
+    const switchOptions = () => {
         switch (selectedPeriod) {
             case '월간' :
                 // const currentMonth = new Date().getMonth() + 1
@@ -106,9 +106,10 @@ const Dropdown = () => {
     };
     useEffect(() => {
         console.log('selectedPeriod is changed, selectedPeriod : ' + selectedPeriod);
+        console.log('selectedCategory is changed, selectedCategory : ' + selectedCategory);
         // 선택값(주간/월간/연간) 변동시 해당 기간의 조회 쿼리 분기처리
-        switchPeriod();
-    }, [selectedPeriod]);
+        switchOptions();
+    }, [selectedPeriod, selectedCategory]);
 
     useEffect(() => {
         // 기간(주간/월간/연간)에 따른 데이터 변경시 헤더(금액부분) 새로 계산
@@ -124,11 +125,11 @@ const Dropdown = () => {
                 <div className="dropDown_container">
                     <div className="first_option_container">
                         <p>기간</p>
-                        <Select defaultValue={firstOptions[0]} options={firstOptions} className="select" onChange={handlePeriodOnChange} />
+                        <Select defaultValue={periodOptions[0]} options={periodOptions} className="select" onChange={handlePeriodOnChange} isSearchable={false}/>
                     </div>
                     <div className="second_option_container">
                         <p>분류</p>
-                        <Select defaultValue={secondOptions[0]} options={secondOptions} className="select" onChange={handleExpenseOnChange} />
+                        <Select defaultValue={categoryOptions[0]} options={categoryOptions} className="select" onChange={handleCategoryOnChange} isSearchable={false}/>
                     </div>
                 </div>
                 <div className="statistics_content_container">
