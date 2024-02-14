@@ -7,6 +7,9 @@ import Select from "react-select";
 const NewItem = ({isOpen, onCancel, onSubmit}) => {
     // 분류 옵션
     const categoryOptions = [
+        { value: "월급", label: "월급"},
+        { value: "상여금", label: "상여금"},
+        { value: "기타수입", label: "기타수입"},
         { value: "저축", label: "저축" },
         { value: "의료비", label: "의료비" },
         { value: "교통비", label: "교통비" },
@@ -14,7 +17,10 @@ const NewItem = ({isOpen, onCancel, onSubmit}) => {
         { value: "문화비", label: "문화비" },
         { value: "보험료", label: "보험료" },
         { value: "공과금", label: "공과금" },
-        { value: "통신비", label: "통신비" }
+        { value: "통신비", label: "통신비" },
+        { value: "경조사비", label: "경조사비" },
+        { value: "임대료", label: "임대료" },
+        { value: "기타", label: "기타" },
     ];
     const [selectedCategory, setSelectedCategory] = useState('');
     const handleCategoryOnChange = (e) => {
@@ -63,12 +69,14 @@ const NewItem = ({isOpen, onCancel, onSubmit}) => {
         use_date: enteredDate,
         title: enteredTitle,
         io_type: entredIoType,
+        category: selectedCategory,
     }
     const registerNewItemHandler = () => {
-        // console.log(
-        //     "user_id: " + window.sessionStorage.getItem('loginUserId') + 
-        //     ", amount: " + enteredAmount + ", use_date: " + enteredDate
-        //     + ", title: " + enteredTitle + ", io_type: " + entredIoType)
+        console.log(
+            "user_id: " + window.sessionStorage.getItem('loginUserId')
+            + ", amount: " + enteredAmount + ", use_date: " + enteredDate
+            + ", title: " + enteredTitle + ", io_type: " + entredIoType
+            + ", category : " + selectedCategory)
         const fetchData = async () => {
             await axios.post(url + '/api/addNewItem', data)
                 .then(res => {
