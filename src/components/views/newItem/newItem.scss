@@ -1,3 +1,5 @@
+@use '../../../styles/common.scss' as common;
+
 .new-item h1 {
     margin-bottom: 32px;
     font-weight: bold;
@@ -7,7 +9,7 @@
     text-align: left;
     display: flex;
     flex-flow: column;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .new-item:before {
@@ -15,7 +17,7 @@
     position: absolute;
     top: 60px;
     left: 45px;
-    width: 310px;
+    width: 210px;
     height: 0px;
     opacity: 0.5;
     border: 1px solid #000000;
@@ -37,29 +39,29 @@
 
 .amount_type {
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
 }
 
 .amount_income {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    margin-left: 30px;
     margin-right: 10px;
+    #income {
+        margin-right: 5px;
+    }
 }
 
 .amount_outcome {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-}
-.amount__income input[type='radio'],
-.amount__outcome input[type='radio'] {
-  margin-right: 2px;
-  accent-color: #808080;
-}
-
-.amount__income input[type='radio']:checked,
-.amount__outcome input[type='radio']:checked {
-  accent-color: #5D5FEF;
+    margin-right: 30px;
+    #outcome {
+        margin-right: 5px;
+    }
 }
 
 .new-item_form-actions {
@@ -69,5 +71,17 @@
 }
   
 .new-item_form-actions button:first-child {
-margin-right: 32px;
+    margin-right: 32px;
+}
+
+.btn-register:hover, .btn-cancle:hover {
+    @include common.hover-event();
+    background-color: orange;
+}
+
+.category_container {
+    margin-bottom: 10px;
+    #categoryOptions {
+        height: 27px;
+    }
 }

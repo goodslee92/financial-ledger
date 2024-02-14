@@ -1,9 +1,25 @@
 import { enteredOnlyNumber, addComma, deleteComma } from '../../../utils/numberUtils';
 import React, { useCallback, useState } from "react";
 import axios from "axios";
-import { url } from '../../common/api'
+import { url } from '../../common/api';
+import Select from "react-select";
 
 const NewItem = ({isOpen, onCancel, onSubmit}) => {
+    // 분류 옵션
+    const categoryOptions = [
+        { value: "저축", label: "저축" },
+        { value: "의료비", label: "의료비" },
+        { value: "교통비", label: "교통비" },
+        { value: "외식비", label: "외식비" },
+        { value: "문화비", label: "문화비" },
+        { value: "보험료", label: "보험료" },
+        { value: "공과금", label: "공과금" },
+        { value: "통신비", label: "통신비" }
+    ];
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const handleCategoryOnChange = (e) => {
+        setSelectedCategory(e.value);
+    };
     // 날짜
     const [enteredDate, setEnteredDate] = useState("");
     const dateChangeHandler = (event) => {
@@ -106,6 +122,10 @@ const NewItem = ({isOpen, onCancel, onSubmit}) => {
                 <input type="text" value={enteredAmount} onChange={amountChangeHandler} placeholder="금액을 입력해주세요." maxLength="11" required />
             </div>
 
+            <div className="category_container">
+                <h2 className='fs-normal fw-regular'>분류</h2>
+                <Select options={categoryOptions} className="categoryOptions" onChange={handleCategoryOnChange} />
+            </div>
             <div className="amount_type">
                 <div className="amount_income">
                     <input 
@@ -125,8 +145,8 @@ const NewItem = ({isOpen, onCancel, onSubmit}) => {
             </div>
 
             <div className="new-item_form-actions">
-                <button className="btn-blue btn-register" onClick={registerNewItemHandler}>등록</button>
-                <button className="btn-white btn-cancle" onClick={cancleHandler}>취소</button>
+                <button className="btn-register" onClick={registerNewItemHandler}>등록</button>
+                <button className="btn-cancle" onClick={cancleHandler}>취소</button>
             </div>
         </div>
     )
