@@ -2,7 +2,14 @@
 @use '../../../styles/common.scss' as common;
 
 .monthly_root_container {
-    padding-bottom: 1%;
+    padding-bottom: 70px;
+}
+.navbar {
+    width: 100%;
+    background-color: #FDD692;
+    padding: 10px 50px 0px 50px;
+    text-align: center;
+    border-top: 1px solid theme.$light-gray;
 }
 .monthly {
     top: 0;

@@ -13,15 +13,15 @@ function Nav() {
       ];
     const [selected, setSelected] = useState();
     const buttonHandler = (text) => {
-        console.log("buttonHandler called...");
+        // console.log("buttonHandler called...");
         const asyncSelected = async () => {
-            console.log("asyncSelected called... item text : " + text);
+            // console.log("asyncSelected called... item text : " + text);
             await setSelected(text);
         }
-        console.log("asyncSelected before...");
+        // console.log("asyncSelected before...");
         asyncSelected();
-        console.log("asyncSelected end...");
-        console.log("selected changed : " + selected);
+        // console.log("asyncSelected end...");
+        // console.log("selected changed : " + selected);
     };
     const classes = useStyles();
     return (
