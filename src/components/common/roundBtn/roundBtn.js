@@ -2,6 +2,7 @@ import React, { createContext, useState } from 'react';
 import Modal from 'react-modal';
 import NewItem from "../../views/newItem/newItem";
 import './roundBtn.scss';
+import { BsCalendarPlusFill  } from "react-icons/bs";
 
 export const ModalContext = createContext();
 export const ModalDispatchContext = createContext({
@@ -19,7 +20,9 @@ const RoundBtn = () => {
     }
     return (
         <div className='roundBtn_container'>
-            <button className="plus_button" onClick={()=> setModalIsOpen(true)}>+</button>
+            <div className="plus_button" onClick={()=> setModalIsOpen(true)}>
+                <BsCalendarPlusFill />
+            </div>
             <Modal className='newItemModal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} ariaHideApp={false}>
                 <NewItem isOpen={modalIsOpen} onCancel={onCancelHandler} onSubmit={onSubmitHandler} />
             </Modal>

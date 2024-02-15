@@ -10,4 +10,7 @@
     text-align: center;
     border-top: 1px solid theme.$light-gray;
     z-index: 999;
+    svg {
+        vertical-align: auto;
+    }
 }
