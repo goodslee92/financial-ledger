@@ -36,33 +36,22 @@ const Dropdown = () => {
     const [totalIncome, setTotalIncome] = useState(0);
     const [totalOutcome, setTotalOutcome] = useState(0);
     const total = { sum: 0, income: 0, outcome: 0 };
-    const data = {
-        id: window.sessionStorage.getItem('loginUserId'),
-        year: new Date().getFullYear()
-    };
     const [financialList, setFinancialList] = useState();
     const [selectedPeriod, setSelectedPeriod] = useState('주간');
     const [selectedCategory, setSelectedCategory] = useState('전체');
+    const data = {
+        id: window.sessionStorage.getItem('loginUserId'),
+        year: new Date().getFullYear(),
+        category: selectedCategory
+    };
     const handlePeriodOnChange = (e) => {
         setSelectedPeriod(e.value);
     };
     const handleCategoryOnChange = (e) => {
         setSelectedCategory(e.value);
     };
-    // 헤더 금액 부분 계산
-    const calcTotalIncome = () => {
-        financialList && financialList.map((content, index) => {
-            total.income += content.TOTAL_INCOME;
-            total.outcome += content.TOTAL_OUTCOME;
-        });
-        total.sum = total.income - total.outcome;
-        setTotalIncome(total.income);
-        setTotalOutcome(total.outcome);
-        setTotalSum(total.sum);
-        console.log('total.income : ' + total.income + ', total.outcome : ' + total.outcome + ', total.sum : ' + total.sum);
-    };
-    // 선택값(기간/분류)에 따라 조회 쿼리 분기처리
-    const switchOptions = () => {
+    const serchBtnOnclickHandler = () => {
+        // 기간 선택값, 분류 선택값 가져와서 조회 쿼리 실행
         switch (selectedPeriod) {
             case '월간' :
                 // const currentMonth = new Date().getMonth() + 1
@@ -102,17 +91,28 @@ const Dropdown = () => {
                 };
                 fetchData();
                 break;
-        }
+        };
+    }
+    // 헤더 금액 부분 계산
+    const calcTotalIncome = () => {
+        financialList && financialList.map((content, index) => {
+            total.income += content.TOTAL_INCOME;
+            total.outcome += content.TOTAL_OUTCOME;
+        });
+        total.sum = total.income - total.outcome;
+        setTotalIncome(total.income);
+        setTotalOutcome(total.outcome);
+        setTotalSum(total.sum);
+        console.log('total.income : ' + total.income + ', total.outcome : ' + total.outcome + ', total.sum : ' + total.sum);
     };
     useEffect(() => {
         console.log('selectedPeriod is changed, selectedPeriod : ' + selectedPeriod);
         console.log('selectedCategory is changed, selectedCategory : ' + selectedCategory);
-        // 선택값(주간/월간/연간) 변동시 해당 기간의 조회 쿼리 분기처리
-        switchOptions();
+        serchBtnOnclickHandler();
     }, [selectedPeriod, selectedCategory]);
 
     useEffect(() => {
-        // 기간(주간/월간/연간)에 따른 데이터 변경시 헤더(금액부분) 새로 계산
+        // 기간,분류에 따른 조회 데이터 변경시 헤더(금액부분) 새로 계산
         calcTotalIncome();
     }, [financialList]);
 
@@ -122,6 +122,7 @@ const Dropdown = () => {
             <Nav />
             <div className="statistics_container">
                 <HeaderAmount income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()}/>
+                <button className="btn-orange statistics_search_btn" onClick={serchBtnOnclickHandler}>조회</button>
                 <div className="dropDown_container">
                     <div className="first_option_container">
                         <p>기간</p>
@@ -140,21 +141,29 @@ const Dropdown = () => {
                     </div>
                     <hr className="statistics_devideLine"/>
                     {
-                        financialList && financialList.map((content, index) => {
-                            return (
-                                <div className="row_statistics_item_container" key={index}>
-                                    <p className="statistics_item_date">
-                                        {
-                                            selectedPeriod === '주간' ? 
-                                            (content.WEEK_START + ' ~ ' + content.WEEK_END) : 
-                                            (selectedPeriod === '월간' ? content.YEAR + '년 ' + content.MONTH + '월' : content.YEAR + '년')
-                                        }
-                                    </p>
-                                    <p className="statistics_item_income">+{addComma(content.TOTAL_INCOME.toString())}원</p>
-                                    <p className="statistics_item_outcome">-{addComma(content.TOTAL_OUTCOME.toString())}원</p>
-                                </div>
+                        financialList ? (
+                            financialList.length > 0 ? (
+                                financialList.map((content, index) => {
+                                    return (
+                                        <div className="row_statistics_item_container" key={index}>
+                                            <p className="statistics_item_date">
+                                                {
+                                                    selectedPeriod === '주간' ? 
+                                                    (content.WEEK_START + ' ~ ' + content.WEEK_END) : 
+                                                    (selectedPeriod === '월간' ? content.YEAR + '년 ' + content.MONTH + '월' : content.YEAR + '년')
+                                                }
+                                            </p>
+                                            <p className="statistics_item_income">+{addComma(content.TOTAL_INCOME.toString())}원</p>
+                                            <p className="statistics_item_outcome">-{addComma(content.TOTAL_OUTCOME.toString())}원</p>
+                                        </div>
+                                    )
+                                })
+                            ) : (
+                                <p>표시할 내역이 없습니다.</p>
                             )
-                        })
+                        ) : (
+                            <p>데이터를 불러오는 중입니다...</p>
+                        )
                     }
                 </div>
             </div>
