@@ -50,7 +50,7 @@ const Dropdown = () => {
     const handleCategoryOnChange = (e) => {
         setSelectedCategory(e.value);
     };
-    const serchBtnOnclickHandler = () => {
+    const selectedOptionChangeHandler = () => {
         // 기간 선택값, 분류 선택값 가져와서 조회 쿼리 실행
         switch (selectedPeriod) {
             case '월간' :
@@ -108,7 +108,7 @@ const Dropdown = () => {
     useEffect(() => {
         console.log('selectedPeriod is changed, selectedPeriod : ' + selectedPeriod);
         console.log('selectedCategory is changed, selectedCategory : ' + selectedCategory);
-        serchBtnOnclickHandler();
+        selectedOptionChangeHandler();
     }, [selectedPeriod, selectedCategory]);
 
     useEffect(() => {
@@ -122,7 +122,6 @@ const Dropdown = () => {
             <Nav />
             <div className="statistics_container">
                 <HeaderAmount income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()}/>
-                <button className="btn-orange statistics_search_btn" onClick={serchBtnOnclickHandler}>조회</button>
                 <div className="dropDown_container">
                     <div className="first_option_container">
                         <p>기간</p>
