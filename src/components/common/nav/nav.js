@@ -9,7 +9,7 @@ function Nav() {
     const buttonList = [
         { text: "달력", path: "/Calendar", icon: <IoCalendarNumberOutline /> },
         { text: "월별", path: "/Monthly", icon: <BsCalendarMonth /> },
-        { text: "통계", path: "/Statistics", icon: <RiBarChartFill /> }
+        { text: "기간별", path: "/Statistics", icon: <RiBarChartFill /> }
       ];
     const [selected, setSelected] = useState();
     const buttonHandler = (text) => {
@@ -50,13 +50,13 @@ const useStyles = makeStyles({
     // 밑줄 비표시
     underLine_none: {
         color: "black",
-        width: "20%",
+        width: "30%",
         textDecoration: "none",
       },
     // 버튼 선택시 빨간 밑줄 표시
     underLine: {
         color: "red",
-        width: "20%",
+        width: "30%",
         textDecoration: "underline",
         textDecorationColor: "#ff5b5b",
         textDecorationThickness: "3px",
