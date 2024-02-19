@@ -1,6 +1,8 @@
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-native";
-// import { useLocation } from 'react-router-dom';
-
+import { IoMenu } from "react-icons/io5";
+import Modal from 'react-modal';
+import Menu from '../menu/menu';
 const HeaderTitle = () => {
     const navigate = useNavigate();
     // const location = useLocation();
@@ -18,19 +20,16 @@ const HeaderTitle = () => {
             clearStorage();
         }
     }
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     return (
         <div className="header_title_container">
-            <span className="loginUserName">    
-                {
-                    sessionStorage.getItem('loginUserName') === null ? 'Guest' : sessionStorage.getItem('loginUserName')
-                } 님
-            </span>
+            <div className="menu_button" onClick={()=> setModalIsOpen(true)}>
+                <IoMenu  />
+            </div>
             <h3 className="headerTitleH3">마이머니북</h3>
-            <button className="logInOutBtn btn-gray" onClick={logInOutBtnOnclickHandler}>
-                {
-                    sessionStorage.getItem('loginUserName') === null ? 'Login' : 'Logout'
-                }
-            </button>
+            <Modal className='menuModal' isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} ariaHideApp={false}>
+                <Menu />
+            </Modal>
         </div>
     )
 }

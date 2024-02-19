@@ -29,9 +29,24 @@
 .header_title_container {
     position: relative;
     background-color: theme.$main-color;
-    // border-bottom: 1px solid black;
     width: 100%;
     @include common.flex-row(space-between, baseline);
+
+    .menu_button {
+        text-align: center;
+        align-self: center;
+        font-size: 25px;
+        svg {
+            vertical-align: baseline;
+        }
+    }
+
+    .headerTitleH3 {
+        flex-grow: 1; // 남은 공간을 차지
+        text-align: center; // 수평으로 텍스트 가운데 정렬
+        align-self: center; // 수직으로 가운데 정렬
+        margin-bottom: 0px;
+    }
 }
 
 .loginUserName {
@@ -40,8 +55,4 @@
 
 .logInOutBtn {
     height: 10%;
-}
-
-.menu_button {
-    font-size: 20px;
 }
