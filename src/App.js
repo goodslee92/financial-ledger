@@ -15,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <div className='background_img_container' style={{ position : 'absolute', zindex : '0', width : '100vw', height : '100vh', backgroundImage : 'url(' + backgoundImg + ')', backgroundRepeat : 'no-repeat', backgroundPosition : 'center', backgroundSize : '100% 100%', opacity : '0.2'}}>
+        <div className='background_img_container' style={{ position : 'absolute', zindex : '0', width : '100vw', height : '100vh', backgroundImage : 'url(' + backgoundImg + ')', backgroundRepeat : 'no-repeat', backgroundPosition : 'center', backgroundSize : '100% 100%', opacity : '0.1'}}>
         </div>
           <Routes>
             <Route path="/" element={<Index />}/>
