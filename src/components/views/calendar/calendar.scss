@@ -95,11 +95,11 @@
                 }
             }
             .col.cell.selected {
-                @include common.shadow(1.5px, theme.$main-color, 0.1);
+                @include common.shadow(1.5px, #000000, 0.1);
                 transform: scale(1.02);
                 border: none;
                 background: theme.$sub-color;
-                color: theme.$main-color;
+                color: #000000;
                 font-weight: 600;
             }
         }
