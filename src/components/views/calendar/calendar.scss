@@ -5,7 +5,6 @@
     @include common.size(100%, 80%);
     .calendarHeader {
         position: relative;
-        z-index: 1;
         margin-top: 10px;
         margin-bottom: 10px;
         @include common.size(100%, 10%);

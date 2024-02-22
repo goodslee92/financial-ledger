@@ -14,13 +14,11 @@
     border-top: 1px solid theme.$light-gray;
 }
 .monthly {
-    top: 0;
     font-family: sans-serif;
     text-align: center;
 }
 
 .monthly_content_container {
-    top: 25%;
     width: 100%;
 }
 .row_monthly_item_container {
@@ -66,7 +64,6 @@
 }
 .calendarHeader {
     position: relative;
-    z-index: 1;
     margin-top: 10px;
     margin-bottom: 10px;
     @include common.size(100%, 10%);
