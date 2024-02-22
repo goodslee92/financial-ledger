@@ -1,6 +1,57 @@
+@use '../../../styles/theme.scss';
+@use '../../../styles/common.scss' as common;
+
 .menu_container {
     position: relative;
-    width: 100vw;
+    width: 70%;
     height: 100vh;
     z-index: 1001;
+    border-right: 1px solid theme.$light-gray;
+}
+
+.close_btn {
+    font-size: 30px;
+    color: black;
+    margin-bottom: 10px;
+    background-color:transparent;
+    border: none;
+}
+
+.user_info_container {
+    @include common.flex-row(center, center);
+    border-top: 1px solid theme.$light-gray;
+    border-bottom: 1px solid theme.$light-gray;
+    svg {
+        vertical-align: baseline;
+    }
+}
+
+.profile_image {
+    font-size: 60px;
+}
+
+.user_name {
+    font-size: 15px;
+    width: 50%;
+    color: black;
+    padding-left: 10px;
+}
+
+.user_info_modify, .logout {
+    font-size: 15px;
+    background-color:transparent;
+    border: 1px solid theme.$light-gray;
+}    
+
+.settings_container {
+    margin-top: 10px;
+    .settings {
+        background-color:transparent;
+        border: none;
+        width: 100%;
+        border-bottom: 1px solid theme.$light-gray;
+    }
+    svg {
+        vertical-align: baseline;
+    }
 }

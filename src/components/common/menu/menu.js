@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import { RiLogoutBoxLine } from "react-icons/ri";
+import { FaUserEdit } from "react-icons/fa";
+import { AiFillSetting } from "react-icons/ai";
 import '../menu/menu.scss';
 
-const Menu = () => {
+const Menu = ({isOpen, onClose}) => {
     const loginUserName = sessionStorage.getItem('loginUserName');
     return (
         <div className="menu_container">
-            <div className='close_btn'>
-                <IoCloseCircleOutline  />
+            <div>
+                <button className='close_btn' onClick={onClose}>
+                    <IoCloseCircleOutline />
+                </button>
             </div>
             { loginUserName === null ? (
                 <div className='user_info_container'>
@@ -27,23 +32,13 @@ const Menu = () => {
                         <span>홍길동</span>
                     </div>
                     <div className='btn_container'>
-                        <button className='user_info_modify'>회원정보수정</button>
-                        <button className='logout'>로그아웃</button>
+                        <button className='user_info_modify'><FaUserEdit />회원정보수정</button>
+                        <button className='logout'><RiLogoutBoxLine />로그아웃</button>
                     </div>
                 </div>
             )}
-            { loginUserName === null ? (
-                <div className='account_container'>
-                    <button className='regist'>회원가입</button>
-                    <button className='find_id'>아이디 찾기</button>
-                    <button className='find_pw'>비밀번호 찾기</button>
-                </div>
-                ) : (
-                    {}
-                )
-            }
             <div className='settings_container'>
-                <button className='settings'>설정</button>
+                <button className='settings'><AiFillSetting />설정</button>
             </div>
         </div>
     )
