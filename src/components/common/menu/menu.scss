@@ -20,11 +20,13 @@
 
 .user_info_container {
     @include common.flex-row(center, center);
+    height: 20%;
     border-top: 1px solid theme.$light-gray;
     border-bottom: 1px solid theme.$light-gray;
     svg {
         vertical-align: baseline;
     }
+    background-color: theme.$light-gray2;
 }
 
 .profile_image {
