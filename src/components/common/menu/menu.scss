@@ -3,9 +3,10 @@
 
 .menu_container {
     position: relative;
-    width: 70%;
+    width: 85%;
     height: 100vh;
     z-index: 1001;
+    background-color: white;
     border-right: 1px solid theme.$light-gray;
 }
 

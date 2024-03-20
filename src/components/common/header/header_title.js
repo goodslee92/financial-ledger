@@ -1,25 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-native";
 import { IoMenu } from "react-icons/io5";
 import Modal from 'react-modal';
 import Menu from '../menu/menu';
 const HeaderTitle = () => {
-    const navigate = useNavigate();
-    // const location = useLocation();
 
-    const clearStorage = () => {
-        sessionStorage.clear();
-        window.location.reload();
-    };
-    const logInOutBtnOnclickHandler = () => {
-        if (sessionStorage.getItem('loginUserName') === null) {
-            // console.log('location.pathname : ' + location.pathname)
-            // sessionStorage.setItem('prevPath', location.pathname)
-            navigate('/');
-        } else {
-            clearStorage();
-        }
-    }
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const onCloseHandler = () => {
         setModalIsOpen(false)

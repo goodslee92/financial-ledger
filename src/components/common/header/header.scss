@@ -38,10 +38,12 @@
         font-size: 25px;
         svg {
             vertical-align: baseline;
+            color: black;
         }
     }
 
     .headerTitleH3 {
+        color: black;
         flex-grow: 1; // 남은 공간을 차지
         text-align: center; // 수평으로 텍스트 가운데 정렬
         align-self: center; // 수직으로 가운데 정렬
