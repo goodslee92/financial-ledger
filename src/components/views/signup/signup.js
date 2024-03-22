@@ -91,23 +91,15 @@ const SignUp = () => {
                     }
                     <button className='btn_checkId' onClick={checkIdHandler}><IoIosCheckmark className='duplicate_check_icon'/>중복 확인</button>
                 </div>
-                <div>
-                        {
-                            !isNullOrEmpty(id) && !idLength(id) &&
-                            <span className='id_length_check'>ID는 4글자 이상 12글자 이하만 사용 가능합니다.</span>
-                        }
-                        {
-                            !isNullOrEmpty(id) && !idNumberAndEnglish(id) &&
-                            <span className='id_num_eng_check'>ID는 영어 또는 숫자만 사용 가능합니다.</span>
-                        }
-                    </div>
+                {
+                    !isNullOrEmpty(id) && !idLength(id) &&
+                    <span className='id_length_check'>ID는 4~12자의 영문과 숫자만 사용 가능합니다..</span>
+                }
                 <input className='su_password' name='password' type="password" placeholder='비밀번호' onChange={passwordChangeHandler} />
-                <div>
-                    {
-                        !isNullOrEmpty(password) && !pwValidationCheck(password) &&
-                        <span className='pw_length_num_eng_check'>PW는 8글자 이상, 영문, 숫자, 특수문자만 사용 가능합니다.</span>
-                    }
-                </div>
+                {
+                    !isNullOrEmpty(password) && !pwValidationCheck(password) &&
+                    <span className='pw_length_num_eng_check'>비밀번호는 8~16자의 영문, 숫자, 특수문자만만 사용가능합니다.</span>
+                }
                 {
                     isNullOrEmpty(password) && pwValidationCheck(password) &&
                     <IoIosCheckmarkCircleOutline className='pw_validation_check'/>
@@ -117,15 +109,17 @@ const SignUp = () => {
                     (password !== '' && passwordCheck !== '' && !isPasswordSame) &&
                     <span className='su_password_check_msg'>비밀번호가 일치하지 않습니다.</span>
                 }
-                <button className="btn-signup" onClick={signUpClickHandler} 
-                    disabled={(isNullOrEmpty(name) || isNullOrEmpty(id) || isNullOrEmpty(password) || isNullOrEmpty(passwordCheck))}>
-                        <MdOutlineCreate />
-                    가입하기
-                </button>
-                <button className="btn-back" onClick={backHandler} >
-                    <TiArrowBackOutline />
-                    뒤로가기    
-                </button>
+                <div className='btn_container'>
+                    <button className="btn-signup" onClick={signUpClickHandler} 
+                        disabled={(isNullOrEmpty(name) || isNullOrEmpty(id) || isNullOrEmpty(password) || isNullOrEmpty(passwordCheck))}>
+                            <MdOutlineCreate />
+                        가입하기
+                    </button>
+                    <button className="btn-back" onClick={backHandler} >
+                        <TiArrowBackOutline />
+                        뒤로가기    
+                    </button>
+                </div>
             </div>
         </div>
     );

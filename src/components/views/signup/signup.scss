@@ -1,7 +1,7 @@
 .signup_root_container {
   position: fixed;
   top: 20%;
-  left: 20%;
+  left: 10%;
 }
 h1 {
   margin-top: 1%;
@@ -15,15 +15,6 @@ span {
 .inputList {
   display: flex;
   flex-direction: column; // 요소들을 세로로 배치합니다.
-  align-items: center; // 가로 방향으로 중앙 정렬합니다.
-  justify-content: center; // 세로 방향으로 중앙 정렬합니다.
-}
-
-// 버튼들에 대한 스타일 수정
-.btn-signup, .btn-back {
-  margin-top: 10px; // 위쪽 여백만 추가하고 나머지 여백은 Flexbox로 정의한 가운데 정렬에 따릅니다.
-  display: inline-block; // 버튼을 인라인 요소로 표시하여 한 줄에 나란히 표시합니다.
-  background-color: transparent;
 }
 
 .name, .su_password, .su_passwordCheck {
@@ -69,4 +60,10 @@ span {
 
 .duplicate_check_icon {
   font-size: 20px;
+}
+
+.btn_container {
+  margin-top: 10px; // 위쪽 여백만 추가하고 나머지 여백은 Flexbox로 정의한 가운데 정렬에 따릅니다.
+  display: inline-block; // 버튼을 인라인 요소로 표시하여 한 줄에 나란히 표시합니다.
+  background-color: transparent;
 }
