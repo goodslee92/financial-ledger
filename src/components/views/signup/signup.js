@@ -3,6 +3,11 @@ import './signup.scss';
 import axios from "axios";
 import { useNavigate } from "react-router-native";
 import { url } from '../../common/api'
+import { IoIosCheckmarkCircleOutline, IoIosCheckmark } from "react-icons/io";
+import { isNullOrEmpty } from '../../../utils/stringUtils';
+import { idLength, idNumberAndEnglish, pwValidationCheck } from '../../../utils/validationCheckUtils';
+import { TiArrowBackOutline } from "react-icons/ti";
+import { MdOutlineCreate } from "react-icons/md";
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -10,38 +15,46 @@ const SignUp = () => {
     const nameChangeHandler = (event) => {
         setName(event.target.value);
     };
-    const [id, setId] = useState();
+    const [id, setId] = useState('');
     const idChangeHandler = (event) => {
         setId(event.target.value);
+        setIdDuplicateCheck(false)
     };
     const [password, setPassword] = useState('');
     const passwordChangeHandler = (event) => {
         setPassword(event.target.value);
     };
-    const [isPasswordSame, setIsPasswordSame] = useState(false);
+    const [passwordCheck, setPasswordCheck] = useState('');
     const passwordCheckChangeHandler = (event) => {
-        if (password === event.target.value) {
-            setIsPasswordSame(true)
-        }
+        setPasswordCheck(event.target.value);
     };
+    const [isPasswordSame, setIsPasswordSame] = useState(false);
     const data = {
         id : id,
         password : password,
         name : name,
     };
-    const onClickHandler = () => {
-        const fetchData = async () => {
-            await axios.post(url + '/api/registerAccount', data)
-                .then(res => {
-                    // console.log(res.data)
-                }).catch(err => {
-                    console.log(err)
-                })
+    const signUpClickHandler = () => {
+        if (password === passwordCheck) {
+            const fetchData = async () => {
+                await axios.post(url + '/api/registerAccount', data)
+                    .then(res => {
+                        // console.log(res.data)
+                    }).catch(err => {
+                        console.log(err)
+                    })
+            }
+            fetchData();
+            setIsPasswordSame(true)
+            alert(data.name + "님의 가입을 환영합니다.");
+            navigate('/');
+        } else {
+            alert('비밀번호가 일치하지 않습니다.')
+            setIsPasswordSame(false)
         }
-        fetchData();
-        alert(data.name + "님의 가입을 환영합니다.");
-        navigate('/');
+
     }
+    const [idDuplicateCheck, setIdDuplicateCheck] = useState(false);
     const checkIdHandler = () => {
         const fetchData = async () => {
             await axios.post(url + '/api/checkId', data)
@@ -49,35 +62,69 @@ const SignUp = () => {
                     // console.log(res.data)
                     if (res.data[0] === undefined) {
                         alert('사용 가능한 ID입니다')
+                        setIdDuplicateCheck(true)
                     } else {
                         alert('이미 존재하는 ID입니다')
+                        setIdDuplicateCheck(false)
                     }
                 }).catch(err => {
                     console.log(err)
                 })
         }
         fetchData();
-}
+    }
+    const backHandler = () => {
+        navigate('/');
+    }
     return (
-        <div>
+        <div className='signup_root_container'>
             <div>
-                <h1>Sign Up</h1>
+                <h1>회원가입</h1>
             </div>
             <div className='inputList'>
                 <input className='name' name='name' type="name" placeholder='이름' onChange={nameChangeHandler} />
                 <div className='su_id_container'>
                     <input className='su_id' name='id' type="id" placeholder='아이디' onChange={idChangeHandler} />
-                    <button className='btn_checkId btn-gray' onClick={checkIdHandler}>중복 확인</button>
+                    
+                    { isNullOrEmpty(id) && idLength(id) && idNumberAndEnglish(id) && idDuplicateCheck && 
+                        <IoIosCheckmarkCircleOutline className='id_validation_check'/>
+                    }
+                    <button className='btn_checkId' onClick={checkIdHandler}><IoIosCheckmark className='duplicate_check_icon'/>중복 확인</button>
                 </div>
+                <div>
+                        {
+                            !isNullOrEmpty(id) && !idLength(id) &&
+                            <span className='id_length_check'>ID는 4글자 이상 12글자 이하만 사용 가능합니다.</span>
+                        }
+                        {
+                            !isNullOrEmpty(id) && !idNumberAndEnglish(id) &&
+                            <span className='id_num_eng_check'>ID는 영어 또는 숫자만 사용 가능합니다.</span>
+                        }
+                    </div>
                 <input className='su_password' name='password' type="password" placeholder='비밀번호' onChange={passwordChangeHandler} />
+                <div>
+                    {
+                        !isNullOrEmpty(password) && !pwValidationCheck(password) &&
+                        <span className='pw_length_num_eng_check'>PW는 8글자 이상, 영문, 숫자, 특수문자만 사용 가능합니다.</span>
+                    }
+                </div>
+                {
+                    isNullOrEmpty(password) && pwValidationCheck(password) &&
+                    <IoIosCheckmarkCircleOutline className='pw_validation_check'/>
+                }
                 <input className='su_passwordCheck' name='passwordCheck' type="password" placeholder='비밀번호 확인' onChange={passwordCheckChangeHandler} />
                 {
-                    !isPasswordSame &&
+                    (password !== '' && passwordCheck !== '' && !isPasswordSame) &&
                     <span className='su_password_check_msg'>비밀번호가 일치하지 않습니다.</span>
                 }
-                <button className="btn-signup btn-gray" onClick={onClickHandler} 
-                    disabled={(id === null || password === null || !isPasswordSame)}>
-                    Sign Up
+                <button className="btn-signup" onClick={signUpClickHandler} 
+                    disabled={(isNullOrEmpty(name) || isNullOrEmpty(id) || isNullOrEmpty(password) || isNullOrEmpty(passwordCheck))}>
+                        <MdOutlineCreate />
+                    가입하기
+                </button>
+                <button className="btn-back" onClick={backHandler} >
+                    <TiArrowBackOutline />
+                    뒤로가기    
                 </button>
             </div>
         </div>

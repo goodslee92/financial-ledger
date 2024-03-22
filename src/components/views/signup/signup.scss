@@ -1,28 +1,46 @@
+.signup_root_container {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+}
 h1 {
   margin-top: 1%;
   margin-bottom: 3%;
   text-align: center;
 }
+span {
+  font-size: 12px;
+}
+// 부모 요소에 Flexbox 속성 추가
+.inputList {
+  display: flex;
+  flex-direction: column; // 요소들을 세로로 배치합니다.
+  align-items: center; // 가로 방향으로 중앙 정렬합니다.
+  justify-content: center; // 세로 방향으로 중앙 정렬합니다.
+}
 
+// 버튼들에 대한 스타일 수정
+.btn-signup, .btn-back {
+  margin-top: 10px; // 위쪽 여백만 추가하고 나머지 여백은 Flexbox로 정의한 가운데 정렬에 따릅니다.
+  display: inline-block; // 버튼을 인라인 요소로 표시하여 한 줄에 나란히 표시합니다.
+  background-color: transparent;
+}
 
 .name, .su_password, .su_passwordCheck {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: auto;
-  width: 15%;
 }
 
 .su_id_container {
   display: flex;
   flex-direction: row;
-  margin: auto; 
   margin-top: 5px;
-  width: 15%;
 }
 
 .btn_checkId {
-  margin-left: auto;
+  margin-left: 5px;
+  background-color: transparent;
 }
 
 .su_password_check_msg {
@@ -30,18 +48,25 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: auto;
-  width: 15%;
-}
+} 
 
 .su_password, .su_passwordCheck {
   margin-top: 5px;
 }
 
-.btn-signup {
-  margin: 10px auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: fit-content;
+.id_validation_check, .pw_validation_check {
+  color: rgb(0, 192, 0);
+  font-size: 30px;
+}
+
+// 스타일 속성 추가
+.id_length_check,
+.id_num_eng_check,
+.pw_length_num_eng_check,
+.su_password_check_msg {
+  display: block;
+}
+
+.duplicate_check_icon {
+  font-size: 20px;
 }
