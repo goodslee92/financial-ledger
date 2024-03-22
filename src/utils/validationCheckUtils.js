@@ -8,8 +8,8 @@ export const idNumberAndEnglish = (id) => {
     return /^[A-Za-z0-9][A-Za-z0-9]*$/.test(id);
 };
 
-// PW 8글자 이상, 영문, 숫자, 특수 문자 사용 체크
+// PW 8~16자 영문, 숫자, 특수 문자 사용 체크
 export const pwValidationCheck = (pw) => {
-    return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(pw);
+    return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/.test(pw);
 };
 
