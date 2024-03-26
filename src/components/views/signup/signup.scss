@@ -1,3 +1,6 @@
+@use '../../../styles/theme.scss';
+@use '../../../styles//common.scss' as common;
+
 .signup_root_container {
   position: fixed;
   top: 20%;
@@ -32,6 +35,7 @@ span {
 .btn_checkId {
   margin-left: 5px;
   background-color: transparent;
+  border: 1px solid theme.$light-gray;
 }
 
 .su_password_check_msg {
@@ -66,4 +70,9 @@ span {
   margin-top: 10px; // 위쪽 여백만 추가하고 나머지 여백은 Flexbox로 정의한 가운데 정렬에 따릅니다.
   display: inline-block; // 버튼을 인라인 요소로 표시하여 한 줄에 나란히 표시합니다.
   background-color: transparent;
+  @include common.flex-row(space-between, baseline);
+
+  .btn_signup, .btn_back {
+    border: 1px solid theme.$light-gray;
+  }
 }

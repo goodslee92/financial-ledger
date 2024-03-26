@@ -110,12 +110,12 @@ const SignUp = () => {
                     <span className='su_password_check_msg'>비밀번호가 일치하지 않습니다.</span>
                 }
                 <div className='btn_container'>
-                    <button className="btn-signup" onClick={signUpClickHandler} 
+                    <button className="btn_signup" onClick={signUpClickHandler} 
                         disabled={(isNullOrEmpty(name) || isNullOrEmpty(id) || isNullOrEmpty(password) || isNullOrEmpty(passwordCheck))}>
                             <MdOutlineCreate />
                         가입하기
                     </button>
-                    <button className="btn-back" onClick={backHandler} >
+                    <button className="btn_back" onClick={backHandler} >
                         <TiArrowBackOutline />
                         뒤로가기    
                     </button>
