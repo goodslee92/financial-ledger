@@ -85,16 +85,23 @@ const SignUp = () => {
                 <input className='name' name='name' type="name" placeholder='이름' onChange={nameChangeHandler} />
                 <div className='su_id_container'>
                     <input className='su_id' name='id' type="id" placeholder='아이디' onChange={idChangeHandler} />
-                    
-                    { isNullOrEmpty(id) && idLength(id) && idNumberAndEnglish(id) && idDuplicateCheck && 
-                        <IoIosCheckmarkCircleOutline className='id_validation_check'/>
+                    {
+                        !isNullOrEmpty(id) && !idLength(id) &&
+                        <span className='id_length_check'>ID는 4~12글자만 사용 가능 합니다.</span>
                     }
-                    <button className='btn_checkId' onClick={checkIdHandler}><IoIosCheckmark className='duplicate_check_icon'/>중복 확인</button>
+                    {
+                        !isNullOrEmpty(id) && idLength(id) && !idNumberAndEnglish(id) &&
+                        <span className='id_length_check'>ID는 영문과 숫자만 사용 가능합니다.</span>
+                    }
+                    <button className='btn_checkId' onClick={checkIdHandler}>
+                        { idDuplicateCheck ? 
+                            <IoIosCheckmarkCircleOutline className='id_validation_check' /> :
+                            <IoIosCheckmark className='duplicate_check_icon' />
+                        }
+                        중복 확인
+                    </button>
+
                 </div>
-                {
-                    !isNullOrEmpty(id) && !idLength(id) &&
-                    <span className='id_length_check'>ID는 4~12자의 영문과 숫자만 사용 가능합니다..</span>
-                }
                 <input className='su_password' name='password' type="password" placeholder='비밀번호' onChange={passwordChangeHandler} />
                 {
                     !isNullOrEmpty(password) && !pwValidationCheck(password) &&
