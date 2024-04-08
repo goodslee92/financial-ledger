@@ -13,20 +13,26 @@ const CalendarCells = ({ currentMonth, selectedDate, onDateClick, financialList 
     let days = [];
     let day = startDate;
     let formattedDate = '';
-
-    // 수입 및 지출 내역을 날짜별로 그룹화
-    const groupedFinancialEntries = financialList.reduce((acc, entry) => {
-        const date = format(parse(entry.USE_DATE, 'yyyy-MM-dd', new Date()), 'yyyy-MM-dd');
-        if (!acc[date]) {
-            acc[date] = { income: 0, outcome: 0 };
-        }
-        if (entry.IO_TYPE === 'I') {
-            acc[date].income++;
-        } else if (entry.IO_TYPE === 'O') {
-            acc[date].outcome++;
-        }
-        return acc;
-    }, {});
+    let groupedFinancialEntries = [];
+    // 배열이 아니면 예외 처리.
+    if (Array.isArray(financialList)) {
+        // 수입 및 지출 내역을 날짜별로 그룹화
+        groupedFinancialEntries = financialList.reduce((acc, entry) => {
+            const date = format(parse(entry.USE_DATE, 'yyyy-MM-dd', new Date()), 'yyyy-MM-dd');
+            if (!acc[date]) {
+                acc[date] = { income: 0, outcome: 0 };
+            }
+            if (entry.IO_TYPE === 'I') {
+                acc[date].income++;
+            } else if (entry.IO_TYPE === 'O') {
+                acc[date].outcome++;
+            }
+            return acc;
+        }, {});
+    } else {
+        // financialList가 배열이 아닌 경우에 대한 처리
+        console.error('financialList is not a valid array.');
+    }
 
     while (day <= endDate) {
         for (let i = 0; i < 7; i++) {
