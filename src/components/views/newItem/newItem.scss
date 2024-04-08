@@ -1,4 +1,5 @@
 @use '../../../styles/common.scss' as common;
+@use '../../../styles/theme.scss';
 
 .new-item h1 {
     margin-bottom: 32px;
@@ -76,7 +77,7 @@
 
 .btn-register:hover, .btn-cancle:hover {
     @include common.hover-event();
-    background-color: orange;
+    background-color: theme.$sub-color;
 }
 
 .category_container {
