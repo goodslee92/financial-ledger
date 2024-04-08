@@ -119,9 +119,9 @@ const Dropdown = () => {
     return (
         <div className="statistics_root_container">
             <HeaderTitle />
+            <HeaderAmount income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()}/>
             <Nav />
             <div className="statistics_container">
-                <HeaderAmount income={totalIncome.toString()} outcome={totalOutcome.toString()} sum={totalSum.toString()}/>
                 <div className="dropDown_container">
                     <div className="first_option_container">
                         <p>기간</p>

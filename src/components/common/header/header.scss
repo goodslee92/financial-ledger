@@ -27,7 +27,6 @@
 }
 
 .header_title_container {
-    position: relative;
     background-color: theme.$main-color;
     width: 100%;
     @include common.flex-row(space-between, baseline);
