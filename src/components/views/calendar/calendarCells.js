@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 import { isSameMonth, isSameDay, addDays, parse } from 'date-fns';
 
-const CalendarCells = ({ currentMonth, selectedDate, onDateClick }) => {
+const CalendarCells = ({ currentMonth, selectedDate, onDateClick, financialList }) => {
     const monthStart = startOfMonth(currentMonth);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
@@ -14,10 +14,26 @@ const CalendarCells = ({ currentMonth, selectedDate, onDateClick }) => {
     let day = startDate;
     let formattedDate = '';
 
+    // 수입 및 지출 내역을 날짜별로 그룹화
+    const groupedFinancialEntries = financialList.reduce((acc, entry) => {
+        const date = format(parse(entry.USE_DATE, 'yyyy-MM-dd', new Date()), 'yyyy-MM-dd');
+        if (!acc[date]) {
+            acc[date] = { income: 0, outcome: 0 };
+        }
+        if (entry.IO_TYPE === 'I') {
+            acc[date].income++;
+        } else if (entry.IO_TYPE === 'O') {
+            acc[date].outcome++;
+        }
+        return acc;
+    }, {});
+
     while (day <= endDate) {
         for (let i = 0; i < 7; i++) {
             formattedDate = format(day, 'd');
-            const cloneDay = day;
+            const dateKey = format(day, 'yyyy-MM-dd');
+            const financialEntries = groupedFinancialEntries[dateKey] || { income: 0, outcome: 0 };
+
             days.push(
                 <div
                     className={`col cell ${
@@ -30,17 +46,29 @@ const CalendarCells = ({ currentMonth, selectedDate, onDateClick }) => {
                             : 'valid'
                     }`}
                     key={day}
-                    onClick={() => onDateClick(parse(cloneDay))}
+                    onClick={() => onDateClick(parse(dateKey, 'yyyy-MM-dd', new Date()))}
                 >
-                    <span
-                        className={
-                            format(currentMonth, 'M') !== format(day, 'M')
-                                ? 'text not-valid'
-                                : ''
-                        }
-                    >
-                        {formattedDate}
-                    </span>
+                    <div>
+                        <span
+                            className={
+                                format(currentMonth, 'M') !== format(day, 'M')
+                                    ? 'text not-valid'
+                                    : ''
+                            }
+                        >
+                            {formattedDate}
+                        </span>
+                        <br />
+                        <div className="item-count">
+                            {financialEntries.income > 0 && (
+                                <span className="income-count">+{financialEntries.income}</span>
+                            )}
+                            <br />
+                            {financialEntries.outcome > 0 && (
+                                <span className="outcome-count">-{financialEntries.outcome}</span>
+                            )}
+                        </div>
+                    </div>
                 </div>,
             );
             day = addDays(day, 1);

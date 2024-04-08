@@ -106,3 +106,19 @@
         }
     }
 }
+
+.income-count {
+    border: 1px solid theme.$gray-color; /* 네모 테두리 스타일 및 색상 */
+    padding: 1px; /* 내부 여백 추가 */
+    box-sizing: border-box; /* 네모 테두리를 포함한 크기 계산 */
+    color: theme.$light-green;
+    background-color: rgb(224, 233, 240);
+}
+
+.outcome-count {
+    border: 1px solid theme.$gray-color; /* 네모 테두리 스타일 및 색상 */
+    padding: 2px; /* 내부 여백 추가 */
+    box-sizing: border-box; /* 네모 테두리를 포함한 크기 계산 */
+    color: theme.$light-red;
+    background-color: rgb(224, 233, 240);;
+}
