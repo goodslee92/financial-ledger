@@ -31,7 +31,7 @@ const CalendarCells = ({ currentMonth, selectedDate, onDateClick, financialList 
         }, {});
     } else {
         // financialList가 배열이 아닌 경우에 대한 처리
-        console.error('financialList is not a valid array.');
+        console.log('financialList is not a valid array.');
     }
 
     while (day <= endDate) {
