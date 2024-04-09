@@ -2,6 +2,7 @@
 @use '../../../styles/common.scss' as common;
 
 .calendar {
+    position: relative;
     @include common.size(100%, 80%);
     .calendarHeader {
         position: relative;

@@ -2,6 +2,7 @@
 @use '../../../styles/common.scss' as common;
 
 .monthly_root_container {
+    position: relative;
     padding-bottom: 70px;
 }
 .monthly {

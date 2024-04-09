@@ -9,7 +9,7 @@ function Nav() {
     const buttonList = [
         { text: "달력", path: "/Calendar", icon: <IoCalendarNumberOutline /> },
         { text: "월별", path: "/Monthly", icon: <BsCalendarMonth /> },
-        { text: "기간별", path: "/Statistics", icon: <RiBarChartFill /> }
+        { text: "분류별", path: "/Statistics", icon: <RiBarChartFill /> }
       ];
     const [selected, setSelected] = useState();
     const buttonHandler = (text) => {

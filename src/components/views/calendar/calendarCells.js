@@ -65,7 +65,7 @@ const CalendarCells = ({ currentMonth, selectedDate, onDateClick, financialList 
                         >
                             {formattedDate}
                         </span>
-                        <br />
+                        <br /><br />
                         <div className="item-count">
                             {financialEntries.income > 0 && (
                                 <span className="income-count">+{financialEntries.income}</span>
