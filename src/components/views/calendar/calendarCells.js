@@ -30,6 +30,7 @@ const CalendarCells = ({ currentMonth, selectedDate, onDateClick, financialList 
             return acc;
         }, {});
     } else {
+        // TODO 비동기처리 방식 때문인지 최초에 props로 받을때 배열이 안들어옴. 새로 렌더링되면서 제대로 전달됨. 
         // financialList가 배열이 아닌 경우에 대한 처리
         console.log('financialList is not a valid array.');
     }
