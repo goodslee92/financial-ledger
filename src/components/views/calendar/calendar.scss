@@ -71,6 +71,9 @@
             @include common.size(100%, 100px);
             @include common.flex-row(space-between, center);
             .col {
+                padding: 0; /* 좌우 패딩 제거 */
+                box-sizing: border-box; /* 패딩과 테두리를 포함한 크기 계산 */
+                width: calc((100% - 12px) / 7); /* 좌우 패딩을 제거한 실제 너비 계산 */
                 @include common.size(13.5%, 93%);
                 @include common.flex-row(flex-start, flex-start);
 
@@ -109,28 +112,28 @@
 }
 
 .income-amount {
-    border: 1px solid theme.$gray-color; /* 네모 테두리 스타일 및 색상 */
+    border: 1px theme.$gray-color; /* 네모 테두리 스타일 및 색상 */
     box-sizing: border-box; /* 네모 테두리를 포함한 크기 계산 */
     color: theme.$light-green;
     background-color: rgb(224, 233, 240);
     font-weight: bold;
-    font-size: 10px;
+    font-size: 8px;
 }
 
 .outcome-amount {
-    border: 1px solid theme.$gray-color; /* 네모 테두리 스타일 및 색상 */
+    border: 1px theme.$gray-color; /* 네모 테두리 스타일 및 색상 */
     box-sizing: border-box; /* 네모 테두리를 포함한 크기 계산 */
     color: theme.$light-red;
     background-color: rgb(224, 233, 240);
     font-weight: bold;
-    font-size: 10px;
+    font-size: 8px;
 }
 
 .total-amount {
-    border: 1px solid theme.$gray-color; /* 네모 테두리 스타일 및 색상 */
+    border: 1px theme.$gray-color; /* 네모 테두리 스타일 및 색상 */
     box-sizing: border-box; /* 네모 테두리를 포함한 크기 계산 */
     color: theme.$dark-gray-color;
     background-color: rgb(224, 233, 240);
     font-weight: bold;
-    font-size: 10px;
+    font-size: 8px;
 }
