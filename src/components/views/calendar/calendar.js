@@ -38,7 +38,6 @@ export const Calendar = () => {
         const fetchData = async () => {
             await axios.post(url + '/api/moneyTblInfo', data)
             .then(res => {
-                console.log('moneyTblInfo api return : ' + res.data)
                 setFinancialList(res.data)
             }).catch(err => {
                 console.log(err)

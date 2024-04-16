@@ -20,12 +20,14 @@ const CalendarCells = ({ currentMonth, selectedDate, onDateClick, financialList 
         groupedFinancialEntries = financialList.reduce((acc, entry) => {
             const date = format(parse(entry.USE_DATE, 'yyyy-MM-dd', new Date()), 'yyyy-MM-dd');
             if (!acc[date]) {
-                acc[date] = { income: 0, outcome: 0 };
+                acc[date] = { income: 0, outcome: 0, incomeAmount: 0, outcomeAmount: 0 };
             }
             if (entry.IO_TYPE === 'I') {
                 acc[date].income++;
+                acc[date].incomeAmount += parseFloat(entry.AMOUNT);
             } else if (entry.IO_TYPE === 'O') {
                 acc[date].outcome++;
+                acc[date].outcomeAmount += parseFloat(entry.AMOUNT);
             }
             return acc;
         }, {});
@@ -39,7 +41,7 @@ const CalendarCells = ({ currentMonth, selectedDate, onDateClick, financialList 
         for (let i = 0; i < 7; i++) {
             formattedDate = format(day, 'd');
             const dateKey = format(day, 'yyyy-MM-dd');
-            const financialEntries = groupedFinancialEntries[dateKey] || { income: 0, outcome: 0 };
+            const financialEntries = groupedFinancialEntries[dateKey] || { income: 0, outcome: 0, incomeAmount: 0, outcomeAmount: 0 };
 
             days.push(
                 <div
@@ -53,7 +55,12 @@ const CalendarCells = ({ currentMonth, selectedDate, onDateClick, financialList 
                             : 'valid'
                     }`}
                     key={day}
-                    onClick={() => onDateClick(parse(dateKey, 'yyyy-MM-dd', new Date()))}
+                    onClick={() => {
+                            // 선택 날짜 갱신
+                            onDateClick(parse(dateKey, 'yyyy-MM-dd', new Date()))
+                            // 선택 날짜 수입,지출 상세내역 표시
+                        }
+                    }
                 >
                     <div>
                         <span
@@ -65,18 +72,22 @@ const CalendarCells = ({ currentMonth, selectedDate, onDateClick, financialList 
                         >
                             {formattedDate}
                         </span>
-                        <br /><br />
-                        <div className="item-count">
+                        <br />
+                        <div className="item-amount">
                             {financialEntries.income > 0 && (
-                                <span className="income-count">+{financialEntries.income}</span>
+                                <span className="income-amount">+{financialEntries.incomeAmount.toLocaleString()}</span>
                             )}
                             <br />
                             {financialEntries.outcome > 0 && (
-                                <span className="outcome-count">-{financialEntries.outcome}</span>
+                                <span className="outcome-amount">-{financialEntries.outcomeAmount.toLocaleString()}</span>
+                            )}
+                            <br />
+                            {(financialEntries.income > 0 || financialEntries.outcome > 0) && (
+                                <span className="total-amount">{(financialEntries.incomeAmount+financialEntries.outcomeAmount).toLocaleString()}</span>
                             )}
                         </div>
                     </div>
-                </div>,
+                </div>
             );
             day = addDays(day, 1);
         }
