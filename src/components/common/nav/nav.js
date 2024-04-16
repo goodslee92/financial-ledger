@@ -8,7 +8,7 @@ import { RiBarChartFill } from "react-icons/ri";
 function Nav() {
     const buttonList = [
         { text: "달력", path: "/Calendar", icon: <IoCalendarNumberOutline /> },
-        { text: "월별", path: "/Monthly", icon: <BsCalendarMonth /> },
+        { text: "월별상세", path: "/Monthly", icon: <BsCalendarMonth /> },
         { text: "분류별", path: "/Statistics", icon: <RiBarChartFill /> }
       ];
     const [selected, setSelected] = useState();
