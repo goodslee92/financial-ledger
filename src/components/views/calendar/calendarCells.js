@@ -82,7 +82,7 @@ const CalendarCells = ({ currentMonth, selectedDate, onDateClick, financialList 
                                 <span className="outcome-amount">-{financialEntries.outcomeAmount.toLocaleString()}</span>
                             )}
                             <br />
-                            {(financialEntries.income > 0 || financialEntries.outcome > 0) && (
+                            {(financialEntries.income > 0 && financialEntries.outcome > 0) && (
                                 <span className="total-amount">{(financialEntries.incomeAmount+financialEntries.outcomeAmount).toLocaleString()}</span>
                             )}
                         </div>
